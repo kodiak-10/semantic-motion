@@ -1,0 +1,12 @@
+node_modules/
+out/
+reports/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+__pycache__/
+.venv/
+public/audio/
+public/external/

@@ -1,0 +1,41 @@
+{
+  "name": "semantic-motion",
+  "version": "0.12.0-alpha.2",
+  "private": true,
+  "description": "Source-grounded Chinese explainer animation skill and 2D renderer (alpha)",
+  "license": "MIT",
+  "scripts": {
+    "setup": "remotion browser ensure",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run typecheck && npm test",
+    "compile": "node scripts/flat/compile.mjs",
+    "render": "node scripts/flat/render.mjs",
+    "build:jev": "node scripts/flat/compile.mjs examples/flat/general-jev/knowledge-plan.json examples/flat/general-jev/staging.json examples/flat/general-jev/generated",
+    "demo:jev": "npm run build:jev && node scripts/flat/render.mjs examples/flat/general-jev/generated/film.json out/jev.mp4",
+    "build:sky": "node scripts/flat/compile.mjs examples/flat/general-sky/knowledge-plan.json examples/flat/general-sky/staging.json examples/flat/general-sky/generated",
+    "demo:sky": "npm run build:sky && node scripts/flat/render.mjs examples/flat/general-sky/generated/film.json out/sky.mp4",
+    "demo": "npm run demo:sky",
+    "preview": "npm run build:sky && node scripts/flat/render.mjs examples/flat/general-sky/generated/film.json out/preview.png 1100",
+    "preview:3d": "node scripts/flat/render.mjs examples/spatial/film.json out/spatial.png 180 --study",
+    "demo:3d": "node scripts/flat/render.mjs examples/spatial/film.json out/spatial.mp4 --study"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "@remotion/renderer": "4.0.533",
+    "ajv": "8.20.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "type": "module"
+}
