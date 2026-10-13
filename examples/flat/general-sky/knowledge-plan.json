@@ -1,0 +1,536 @@
+{
+  "input": {
+    "topic": "为什么天空是蓝色：从光进入眼睛讲起",
+    "audience_level": "普通大众",
+    "duration": 84,
+    "explanation_depth": "standard",
+    "aspect_ratio": "16:9",
+    "language": "zh-CN",
+    "audio_mode": "silent"
+  },
+  "learning_goal": "为什么天空是蓝色：从光进入眼睛讲起：能用自己的话说明基本概念、过程、例子和适用边界。",
+  "sources": [
+    {
+      "id": "nasa",
+      "url": "https://spaceplace.nasa.gov/blue-sky/en/",
+      "title": "NASA Space Place: Why Is the Sky Blue?",
+      "accessed": "2026-10-12"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim1",
+      "text": "看起来白色的太阳光，包含多种颜色的光。红光、绿光、蓝光，都在这束光里。图里把颜色分开，只是为了看清组成。空气对不同颜色的影响，是蓝天的关键。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "claim2",
+      "text": "看见一种颜色，意味着有相应的光进入眼睛。我们抬头看天空，并不是一直盯着太阳。那么，侧面天空的光是怎么到眼前的？需要看看阳光经过空气时发生了什么。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "claim3",
+      "text": "空气由许多微小粒子组成，其中有气体分子。阳光与这些分子相互作用，部分光改变方向。这种改变传播方向的现象，叫作散射。对这些很小的分子，蓝光比红光更容易散开。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "claim4",
+      "text": "现在看一束穿过空气的阳光。其中一些蓝光散向侧面，进入观察者的眼睛。四周的空气都在发生这样的过程。因此晴朗白天，我们会看到蓝色的天空。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "claim5",
+      "text": "日落时，阳光到达我们前要穿过更长的空气。较多蓝光在途中已被散向别处。直接到达眼睛的光，因此常常更偏红。云滴、尘埃和不同大气，还会进一步改变颜色。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "claim6",
+      "text": "白色阳光里，本来就有不同颜色。晴朗空气更容易把蓝光散向各处。这些散射的光进入眼睛，我们就看到了蓝天。这是地球常见晴天的解释，不适用于所有天空。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    }
+  ],
+  "scope": {
+    "included": [
+      "definition",
+      "motivation",
+      "mechanism",
+      "example",
+      "limitations",
+      "takeaway"
+    ],
+    "omitted": [
+      {
+        "dimension": "comparison",
+        "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+      },
+      {
+        "dimension": "use-cases",
+        "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+      },
+      {
+        "dimension": "misconceptions",
+        "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "dimension": "definition",
+      "title": "白色阳光，为什么变成蓝天？",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "白光",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "不同颜色",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "空气",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s1-c1",
+          "text": "看起来白色的太阳光，包含多种颜色的光。",
+          "keyword": "看起",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s1-c2",
+          "text": "红光、绿光、蓝光，都在这束光里。",
+          "keyword": "红光",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s1-c3",
+          "text": "图里把颜色分开，只是为了看清组成。",
+          "keyword": "图里",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s1-c4",
+          "text": "空气对不同颜色的影响，是蓝天的关键。",
+          "keyword": "空气",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim1"
+      ],
+      "requires": [],
+      "teaches": [
+        "concept1"
+      ],
+      "terms": [],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s2",
+      "dimension": "motivation",
+      "title": "你看到的颜色，从哪里来？",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "太阳",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "侧面天空",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "眼睛",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s2-c1",
+          "text": "看见一种颜色，意味着有相应的光进入眼睛。",
+          "keyword": "看见",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s2-c2",
+          "text": "我们抬头看天空，并不是一直盯着太阳。",
+          "keyword": "我们",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s2-c3",
+          "text": "那么，侧面天空的光是怎么到眼前的？",
+          "keyword": "那么",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s2-c4",
+          "text": "需要看看阳光经过空气时发生了什么。",
+          "keyword": "需要",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim2"
+      ],
+      "requires": [
+        "concept1"
+      ],
+      "teaches": [
+        "concept2"
+      ],
+      "terms": [],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s3",
+      "dimension": "mechanism",
+      "title": "空气让部分光改变方向",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "入射光",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "空气分子",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "散射光",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s3-c1",
+          "text": "空气由许多微小粒子组成，其中有气体分子。",
+          "keyword": "空气",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s3-c2",
+          "text": "阳光与这些分子相互作用，部分光改变方向。",
+          "keyword": "阳光",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s3-c3",
+          "text": "这种改变传播方向的现象，叫作散射。",
+          "keyword": "这种",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s3-c4",
+          "text": "对这些很小的分子，蓝光比红光更容易散开。",
+          "keyword": "对这",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim3"
+      ],
+      "requires": [
+        "concept2"
+      ],
+      "teaches": [
+        "concept3"
+      ],
+      "terms": [
+        {
+          "term": "散射",
+          "explanation": "改变传播方向"
+        }
+      ],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s4",
+      "dimension": "example",
+      "title": "蓝光从侧面进入眼睛",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "阳光",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "散向侧面",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "进入眼睛",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s4-c1",
+          "text": "现在看一束穿过空气的阳光。",
+          "keyword": "现在",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s4-c2",
+          "text": "其中一些蓝光散向侧面，进入观察者的眼睛。",
+          "keyword": "其中",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s4-c3",
+          "text": "四周的空气都在发生这样的过程。",
+          "keyword": "四周",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s4-c4",
+          "text": "因此晴朗白天，我们会看到蓝色的天空。",
+          "keyword": "因此",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim4"
+      ],
+      "requires": [
+        "concept3"
+      ],
+      "teaches": [
+        "concept4"
+      ],
+      "terms": [],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s5",
+      "dimension": "limitations",
+      "title": "为什么日落常常偏红？",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "路径更长",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "蓝光散走",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "偏红光线",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s5-c1",
+          "text": "日落时，阳光到达我们前要穿过更长的空气。",
+          "keyword": "日落",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s5-c2",
+          "text": "较多蓝光在途中已被散向别处。",
+          "keyword": "较多",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s5-c3",
+          "text": "直接到达眼睛的光，因此常常更偏红。",
+          "keyword": "直接",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s5-c4",
+          "text": "云滴、尘埃和不同大气，还会进一步改变颜色。",
+          "keyword": "云滴",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim5"
+      ],
+      "requires": [
+        "concept4"
+      ],
+      "teaches": [
+        "concept5"
+      ],
+      "terms": [],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s6",
+      "dimension": "takeaway",
+      "title": "蓝天，是光传播的结果",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "e0",
+          "label": "多色阳光",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e1",
+          "label": "空气散射",
+          "glyph": "document",
+          "detail": ""
+        },
+        {
+          "id": "e2",
+          "label": "看到蓝天",
+          "glyph": "document",
+          "detail": ""
+        }
+      ],
+      "cues": [
+        {
+          "id": "s6-c1",
+          "text": "白色阳光里，本来就有不同颜色。",
+          "keyword": "白色",
+          "action": "track",
+          "target": "e0"
+        },
+        {
+          "id": "s6-c2",
+          "text": "晴朗空气更容易把蓝光散向各处。",
+          "keyword": "晴朗",
+          "action": "track",
+          "target": "e1"
+        },
+        {
+          "id": "s6-c3",
+          "text": "这些散射的光进入眼睛，我们就看到了蓝天。",
+          "keyword": "这些",
+          "action": "track",
+          "target": "e2"
+        },
+        {
+          "id": "s6-c4",
+          "text": "这是地球常见晴天的解释，不适用于所有天空。",
+          "keyword": "这是",
+          "action": "track",
+          "target": "e2"
+        }
+      ],
+      "note": "对应分镜逐步演示；示意图不代表真实比例。",
+      "claim_ids": [
+        "claim6"
+      ],
+      "requires": [
+        "concept5"
+      ],
+      "teaches": [
+        "concept6"
+      ],
+      "terms": [],
+      "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+      "layout": "diagonal"
+    }
+  ],
+  "comprehension_check": {
+    "question": "没有海洋的地方，天空还能是蓝色吗？",
+    "answer": "能。晴天蓝色主要由阳光在空气中的选择性散射产生，不需要海洋反射。"
+  },
+  "review": {
+    "accuracy": 4,
+    "completeness": 4,
+    "clarity": 4,
+    "analogy_quality": 4,
+    "jargon_control": 5,
+    "visual_grounding": 4,
+    "notes": [
+      "2026-10-12重新核对所列原始资料；逐句复核，不以结构校验替代事实审查。",
+      "讲稿先给基本概念，再说明具体过程；示意数据不代表实测结果。",
+      "画面与讲稿必须通过正式内容绑定与全帧碰撞检查；审美和理解效果待实际观看。"
+    ]
+  },
+  "foundation": {
+    "concept": "白光",
+    "category": "光",
+    "plain_definition": "看起来白色的太阳光，包含多种颜色的光。",
+    "definition_cue_id": "s1-c1"
+  }
+}
