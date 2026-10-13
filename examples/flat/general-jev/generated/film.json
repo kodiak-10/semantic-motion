@@ -1,0 +1,5717 @@
+{
+  "mode": "flat2d",
+  "topic": "Jev 是什么：从一条客服消息讲明白",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 84,
+  "series": "",
+  "style_profile": "studio",
+  "reviewOverlay": false,
+  "knowledgePlan": {
+    "input": {
+      "topic": "Jev 是什么：从一条客服消息讲明白",
+      "audience_level": "普通大众",
+      "duration": 84,
+      "explanation_depth": "standard",
+      "aspect_ratio": "16:9",
+      "language": "zh-CN",
+      "audio_mode": "silent"
+    },
+    "learning_goal": "Jev 是什么：从一条客服消息讲明白：能用自己的话说明基本概念、过程、例子和适用边界。",
+    "sources": [
+      {
+        "id": "intro",
+        "url": "https://docs.typesafe.ai/introduction",
+        "title": "TypeSafe Introduction",
+        "accessed": "2026-10-12"
+      },
+      {
+        "id": "confidence",
+        "url": "https://docs.typesafe.ai/confidence",
+        "title": "TypeSafe Confidence",
+        "accessed": "2026-10-12"
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim1",
+        "text": "Jev 是一种用来做判断的人工智能模型。开发者把它接进软件，交给它文字等信息。它评估问题，返回软件能直接使用的结果。你可以先把它理解成软件里的判断助手。",
+        "kind": "vendor-claim",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      },
+      {
+        "id": "claim2",
+        "text": "比如客服收到一句：包裹三天还没到。人能看出这可能是物流问题。但软件要知道，该把消息送给哪个部门。判断助手负责分析意思，程序负责安排后续。",
+        "kind": "vendor-claim",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      },
+      {
+        "id": "claim3",
+        "text": "以选择题功能为例，先列出允许的选项。我们设为：物流、退款、其他。再问：这条客户消息应该交给哪一类？结果按固定字段返回，这叫结构化输出。",
+        "kind": "vendor-claim",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      },
+      {
+        "id": "claim4",
+        "text": "假设返回：物流百分之八十，退款十五，其他五。这些概率表示模型对各选项的判断倾向。数字只是教学假设，不是实际测试结果。程序可以按规则，把这条消息送进物流队列。",
+        "kind": "illustration",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      },
+      {
+        "id": "claim5",
+        "text": "现在把消息改成：这个订单有问题。信息少了，可能是物流，也可能需要退款。即使格式完全正确，判断仍然可能出错。所以资料不足或风险高时，可以交给人复核。",
+        "kind": "vendor-claim",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      },
+      {
+        "id": "claim6",
+        "text": "记住：Jev 是给软件提供判断的模型。开发者定义问题、选项和后续处理规则。模型返回结果，程序决定怎么用这个结果。它能辅助自动化，但不能保证每次判断都对。",
+        "kind": "vendor-claim",
+        "source_ids": [
+          "intro",
+          "confidence"
+        ]
+      }
+    ],
+    "scope": {
+      "included": [
+        "definition",
+        "motivation",
+        "mechanism",
+        "example",
+        "limitations",
+        "takeaway"
+      ],
+      "omitted": [
+        {
+          "dimension": "comparison",
+          "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+        },
+        {
+          "dimension": "use-cases",
+          "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+        },
+        {
+          "dimension": "misconceptions",
+          "reason": "本片优先讲清基本概念、机制和边界，暂不展开此维度。"
+        }
+      ]
+    },
+    "scenes": [
+      {
+        "id": "s1",
+        "dimension": "definition",
+        "title": "Jev 到底是什么？",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "信息",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "判断助手",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "结果",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s1-c1",
+            "text": "Jev 是一种用来做判断的人工智能模型。",
+            "keyword": "Je",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s1-c2",
+            "text": "开发者把它接进软件，交给它文字等信息。",
+            "keyword": "开发",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s1-c3",
+            "text": "它评估问题，返回软件能直接使用的结果。",
+            "keyword": "它评",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s1-c4",
+            "text": "你可以先把它理解成软件里的判断助手。",
+            "keyword": "你可",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim1"
+        ],
+        "requires": [],
+        "teaches": [
+          "concept1"
+        ],
+        "terms": [],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s2",
+        "dimension": "motivation",
+        "title": "为什么软件需要这种判断？",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "客户消息",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "物流问题",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "后续处理",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s2-c1",
+            "text": "比如客服收到一句：包裹三天还没到。",
+            "keyword": "比如",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s2-c2",
+            "text": "人能看出这可能是物流问题。",
+            "keyword": "人能",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s2-c3",
+            "text": "但软件要知道，该把消息送给哪个部门。",
+            "keyword": "但软",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s2-c4",
+            "text": "判断助手负责分析意思，程序负责安排后续。",
+            "keyword": "判断",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim2"
+        ],
+        "requires": [
+          "concept1"
+        ],
+        "teaches": [
+          "concept2"
+        ],
+        "terms": [],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s3",
+        "dimension": "mechanism",
+        "title": "先给情况，再限定问题",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "情况",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "选项",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "结构化输出",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s3-c1",
+            "text": "以选择题功能为例，先列出允许的选项。",
+            "keyword": "以选",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s3-c2",
+            "text": "我们设为：物流、退款、其他。",
+            "keyword": "我们",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s3-c3",
+            "text": "再问：这条客户消息应该交给哪一类？",
+            "keyword": "再问",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s3-c4",
+            "text": "结果按固定字段返回，这叫结构化输出。",
+            "keyword": "结果",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim3"
+        ],
+        "requires": [
+          "concept2"
+        ],
+        "teaches": [
+          "concept3"
+        ],
+        "terms": [
+          {
+            "term": "结构化输出",
+            "explanation": "固定字段"
+          }
+        ],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s4",
+        "dimension": "example",
+        "title": "同一条消息，得到什么？",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "物流",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "退款",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "其他",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s4-c1",
+            "text": "假设返回：物流百分之八十，退款十五，其他五。",
+            "keyword": "假设",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s4-c2",
+            "text": "这些概率表示模型对各选项的判断倾向。",
+            "keyword": "这些",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s4-c3",
+            "text": "数字只是教学假设，不是实际测试结果。",
+            "keyword": "数字",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s4-c4",
+            "text": "程序可以按规则，把这条消息送进物流队列。",
+            "keyword": "程序",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim4"
+        ],
+        "requires": [
+          "concept3"
+        ],
+        "teaches": [
+          "concept4"
+        ],
+        "terms": [
+          {
+            "term": "概率",
+            "explanation": "判断倾向"
+          }
+        ],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s5",
+        "dimension": "limitations",
+        "title": "能选一个答案，不等于选对",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "消息变模糊",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "判断可能错",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "人工复核",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s5-c1",
+            "text": "现在把消息改成：这个订单有问题。",
+            "keyword": "现在",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s5-c2",
+            "text": "信息少了，可能是物流，也可能需要退款。",
+            "keyword": "信息",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s5-c3",
+            "text": "即使格式完全正确，判断仍然可能出错。",
+            "keyword": "即使",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s5-c4",
+            "text": "所以资料不足或风险高时，可以交给人复核。",
+            "keyword": "所以",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim5"
+        ],
+        "requires": [
+          "concept4"
+        ],
+        "teaches": [
+          "concept5"
+        ],
+        "terms": [],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s6",
+        "dimension": "takeaway",
+        "title": "分清判断与行动",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "e0",
+            "label": "提供情况",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e1",
+            "label": "给出判断",
+            "glyph": "document",
+            "detail": ""
+          },
+          {
+            "id": "e2",
+            "label": "决定行动",
+            "glyph": "document",
+            "detail": ""
+          }
+        ],
+        "cues": [
+          {
+            "id": "s6-c1",
+            "text": "记住：Jev 是给软件提供判断的模型。",
+            "keyword": "记住",
+            "action": "track",
+            "target": "e0"
+          },
+          {
+            "id": "s6-c2",
+            "text": "开发者定义问题、选项和后续处理规则。",
+            "keyword": "开发",
+            "action": "track",
+            "target": "e1"
+          },
+          {
+            "id": "s6-c3",
+            "text": "模型返回结果，程序决定怎么用这个结果。",
+            "keyword": "模型",
+            "action": "track",
+            "target": "e2"
+          },
+          {
+            "id": "s6-c4",
+            "text": "它能辅助自动化，但不能保证每次判断都对。",
+            "keyword": "它能",
+            "action": "track",
+            "target": "e2"
+          }
+        ],
+        "note": "对应分镜逐步演示；示意图不代表真实比例。",
+        "claim_ids": [
+          "claim6"
+        ],
+        "requires": [
+          "concept5"
+        ],
+        "teaches": [
+          "concept6"
+        ],
+        "terms": [],
+        "visual_reason": "对象状态和变化由独立分镜给出，与讲稿共用时间线。",
+        "layout": "diagonal"
+      }
+    ],
+    "comprehension_check": {
+      "question": "返回格式合法，是否就能跳过业务检查自动退款？",
+      "answer": "不能。格式合法不保证判断正确，动作还受业务规则、权限和风险控制约束。"
+    },
+    "review": {
+      "accuracy": 4,
+      "completeness": 4,
+      "clarity": 4,
+      "analogy_quality": 4,
+      "jargon_control": 5,
+      "visual_grounding": 4,
+      "notes": [
+        "2026-10-12重新核对所列原始资料；逐句复核，不以结构校验替代事实审查。",
+        "讲稿先给基本概念，再说明具体过程；示意数据不代表实测结果。",
+        "画面与讲稿必须通过正式内容绑定与全帧碰撞检查；审美和理解效果待实际观看。"
+      ]
+    },
+    "foundation": {
+      "concept": "Jev",
+      "category": "人工智能模型",
+      "plain_definition": "Jev 是一种用来做判断的人工智能模型。",
+      "definition_cue_id": "s1-c1"
+    }
+  },
+  "shots": [
+    {
+      "id": "s1",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "Jev：软件里的判断助手",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6555,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "input",
+          "kind": "surface",
+          "width": 540,
+          "height": 175,
+          "color": "#f6f0e2",
+          "fill": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 155,
+              "y": 430,
+              "opacity": 0
+            },
+            {
+              "t": 0.7283333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 2.185,
+              "x": 155
+            },
+            {
+              "t": 7.283333333333333,
+              "x": 510,
+              "opacity": 1
+            },
+            {
+              "t": 8.157333333333334,
+              "opacity": 0
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "input-print",
+          "kind": "text",
+          "text": "客户发来的消息",
+          "size": 34,
+          "color": "#20363d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 35,
+              "y": 105,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6555,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ],
+          "align": "start",
+          "printedOn": "input"
+        },
+        {
+          "id": "model",
+          "kind": "dots",
+          "states": [
+            {
+              "t": 0,
+              "points": [
+                {
+                  "x": 1000,
+                  "y": 520,
+                  "r": 110,
+                  "color": "#79c8c1"
+                }
+              ]
+            },
+            {
+              "t": 14.566666666666666,
+              "points": [
+                {
+                  "x": 1000,
+                  "y": 520,
+                  "r": 110,
+                  "color": "#79c8c1"
+                }
+              ]
+            }
+          ],
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6555,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "model-label",
+          "kind": "text",
+          "text": "判断助手",
+          "size": 42,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1000,
+              "y": 720,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6555,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "output",
+          "kind": "asset",
+          "asset": "envelope",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1540,
+              "y": 530,
+              "opacity": 0,
+              "scale": 0.75
+            },
+            {
+              "t": 5.826666666666667,
+              "opacity": 0
+            },
+            {
+              "t": 5.826666666666667,
+              "v": 0
+            },
+            {
+              "t": 6.482166666666667,
+              "opacity": 1
+            },
+            {
+              "t": 13.11,
+              "v": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "output-label",
+          "kind": "text",
+          "text": "软件能用的结果",
+          "size": 34,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1540,
+              "y": 740,
+              "opacity": 0
+            },
+            {
+              "t": 6.555,
+              "opacity": 0
+            },
+            {
+              "t": 7.2105,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666666,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "pair": [
+            "input",
+            "model"
+          ],
+          "reason": "输入消息进入判断助手后被消费",
+          "start": 2.185,
+          "end": 8.157333333333334
+        }
+      ],
+      "visualEvidence": {
+        "trigger": "给出一段消息",
+        "change": "消息靠近判断助手，结果信封出现",
+        "result": "模型提供判断结果",
+        "nodes": [
+          "input",
+          "model",
+          "output"
+        ]
+      },
+      "start": 0,
+      "end": 14.566666666666666,
+      "label": ""
+    },
+    {
+      "id": "s2",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "读懂消息，只是第一步",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.5865,
+              "opacity": 1
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "parcel",
+          "kind": "asset",
+          "asset": "parcel-cutaway",
+          "keys": [
+            {
+              "t": 0,
+              "x": 470,
+              "y": 580,
+              "opacity": 0,
+              "scale": 0.8
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.5865,
+              "opacity": 1
+            },
+            {
+              "t": 2.6066666666666674,
+              "v": 0.2
+            },
+            {
+              "t": 5.865000000000001,
+              "v": 1
+            },
+            {
+              "t": 9.384,
+              "v": 0.6
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            },
+            {
+              "t": 13.033333333333335,
+              "v": 1
+            }
+          ]
+        },
+        {
+          "id": "message",
+          "kind": "surface",
+          "width": 660,
+          "height": 175,
+          "color": "#f6f0e2",
+          "fill": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 970,
+              "y": 470,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.5865,
+              "opacity": 1
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "message-print",
+          "kind": "text",
+          "text": "包裹三天还没到",
+          "size": 34,
+          "color": "#20363d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 35,
+              "y": 105,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.5865,
+              "opacity": 1
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            }
+          ],
+          "align": "start",
+          "printedOn": "message"
+        },
+        {
+          "id": "person",
+          "kind": "text",
+          "text": "客户遇到问题",
+          "size": 38,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 470,
+              "y": 800,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.5865,
+              "opacity": 1
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "task",
+          "kind": "text",
+          "text": "需要找到负责的部门",
+          "size": 38,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1300,
+              "y": 790,
+              "opacity": 0
+            },
+            {
+              "t": 5.213333333333335,
+              "opacity": 0
+            },
+            {
+              "t": 5.799833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.446833333333334,
+              "opacity": 1
+            },
+            {
+              "t": 13.033333333333335,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "客户描述包裹问题",
+        "change": "包裹展开，消息呈现",
+        "result": "软件仍需要一个处理去向",
+        "nodes": [
+          "parcel",
+          "message"
+        ]
+      },
+      "start": 14.566666666666666,
+      "end": 27.6,
+      "label": ""
+    },
+    {
+      "id": "s3",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "先限定问题与选项",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.579,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "kind": "surface",
+          "width": 690,
+          "height": 175,
+          "color": "#f6f0e2",
+          "fill": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 140,
+              "y": 460,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.579,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "question-print",
+          "kind": "text",
+          "text": "这条消息，属于哪一类？",
+          "size": 34,
+          "color": "#20363d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 35,
+              "y": 105,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.579,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ],
+          "align": "start",
+          "printedOn": "question"
+        },
+        {
+          "id": "options",
+          "kind": "text",
+          "text": "允许的选项",
+          "size": 36,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1310,
+              "y": 350,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.579,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "log",
+          "kind": "text",
+          "text": "物流",
+          "size": 46,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1200,
+              "y": 475,
+              "opacity": 0
+            },
+            {
+              "t": 1.544,
+              "opacity": 0
+            },
+            {
+              "t": 2.1229999999999998,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "refund",
+          "kind": "text",
+          "text": "退款",
+          "size": 46,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1470,
+              "y": 475,
+              "opacity": 0
+            },
+            {
+              "t": 3.088,
+              "opacity": 0
+            },
+            {
+              "t": 3.667,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "other",
+          "kind": "text",
+          "text": "其他",
+          "size": 46,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1340,
+              "y": 590,
+              "opacity": 0
+            },
+            {
+              "t": 4.632,
+              "opacity": 0
+            },
+            {
+              "t": 5.210999999999999,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "answer",
+          "kind": "asset",
+          "asset": "envelope",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1320,
+              "y": 740,
+              "opacity": 0,
+              "scale": 0.55
+            },
+            {
+              "t": 7.462666666666666,
+              "opacity": 0
+            },
+            {
+              "t": 7.462666666666666,
+              "v": 0
+            },
+            {
+              "t": 8.041666666666668,
+              "opacity": 1
+            },
+            {
+              "t": 11.58,
+              "v": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "fixed",
+          "kind": "text",
+          "text": "用固定字段返回结果",
+          "size": 36,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 480,
+              "y": 790,
+              "opacity": 0
+            },
+            {
+              "t": 7.977333333333333,
+              "opacity": 0
+            },
+            {
+              "t": 8.556333333333335,
+              "opacity": 1
+            },
+            {
+              "t": 12.287666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 12.866666666666667,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "开发者给出允许的选项",
+        "change": "三个选项依次建立，答案形成",
+        "result": "结果被约束为软件能读的字段",
+        "nodes": [
+          "question",
+          "answer"
+        ]
+      },
+      "start": 27.6,
+      "end": 40.46666666666667,
+      "label": ""
+    },
+    {
+      "id": "s4",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "概率，是对不同选项的判断倾向",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6734999999999998,
+              "opacity": 1
+            },
+            {
+              "t": 14.29316666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "distribution",
+          "kind": "dots",
+          "states": [
+            {
+              "t": 0,
+              "points": [
+                {
+                  "x": 365,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                }
+              ]
+            },
+            {
+              "t": 0.5986666666666665,
+              "points": [
+                {
+                  "x": 365,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 480,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 494,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 508,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 522,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 536,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 550,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 564,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 578,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 592,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 365,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 379,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 393,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 407,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 421,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 435,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 449,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 463,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 477,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                },
+                {
+                  "x": 491,
+                  "y": 606,
+                  "r": 5,
+                  "color": "#f6f0e2"
+                }
+              ]
+            },
+            {
+              "t": 7.782666666666664,
+              "points": [
+                {
+                  "x": 910,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 995,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1012,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1029,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1046,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1063,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 927,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 944,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 961,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 978,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                }
+              ]
+            },
+            {
+              "t": 14.068666666666662,
+              "points": [
+                {
+                  "x": 910,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 995,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1012,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1029,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1046,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1063,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 927,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 944,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 961,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 978,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                }
+              ]
+            },
+            {
+              "t": 14.966666666666661,
+              "points": [
+                {
+                  "x": 910,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 390,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 404,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 418,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 432,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 446,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 460,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 474,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 927,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 944,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 961,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 978,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 995,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1012,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1029,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1046,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 1063,
+                  "y": 488,
+                  "r": 6,
+                  "color": "#79c8c1"
+                },
+                {
+                  "x": 910,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 995,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1012,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1029,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1046,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 1063,
+                  "y": 545,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 927,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 944,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 961,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 978,
+                  "y": 559,
+                  "r": 6,
+                  "color": "#de987d"
+                },
+                {
+                  "x": 910,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 927,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 944,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 961,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                },
+                {
+                  "x": 978,
+                  "y": 700,
+                  "r": 6,
+                  "color": "#b4bcc6"
+                }
+              ]
+            }
+          ],
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6734999999999998,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "message-label",
+          "kind": "text",
+          "text": "消息的分类结果",
+          "size": 36,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 410,
+              "y": 735,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6734999999999998,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "p1",
+          "kind": "text",
+          "text": "物流 80%",
+          "size": 48,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1390,
+              "y": 435,
+              "opacity": 0
+            },
+            {
+              "t": 5.2383333333333315,
+              "opacity": 0
+            },
+            {
+              "t": 5.91183333333333,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "kind": "text",
+          "text": "退款 15%",
+          "size": 48,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1390,
+              "y": 585,
+              "opacity": 0
+            },
+            {
+              "t": 5.2383333333333315,
+              "opacity": 0
+            },
+            {
+              "t": 5.91183333333333,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "kind": "text",
+          "text": "其他 5%",
+          "size": 48,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1390,
+              "y": 740,
+              "opacity": 0
+            },
+            {
+              "t": 5.2383333333333315,
+              "opacity": 0
+            },
+            {
+              "t": 5.91183333333333,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "illustration",
+          "kind": "text",
+          "text": "教学假设，并非实测",
+          "size": 28,
+          "color": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 870,
+              "opacity": 0
+            },
+            {
+              "t": 1.4966666666666661,
+              "opacity": 0
+            },
+            {
+              "t": 2.1701666666666664,
+              "opacity": 1
+            },
+            {
+              "t": 9.27933333333333,
+              "opacity": 1
+            },
+            {
+              "t": 10.326999999999996,
+              "opacity": 0
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "queue",
+          "kind": "asset",
+          "asset": "inbox",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1480,
+              "y": 540,
+              "opacity": 0,
+              "scale": 0.85
+            },
+            {
+              "t": 10.476666666666663,
+              "opacity": 0
+            },
+            {
+              "t": 11.150166666666662,
+              "opacity": 1
+            },
+            {
+              "t": 14.29316666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "routed",
+          "kind": "asset",
+          "asset": "envelope",
+          "keys": [
+            {
+              "t": 0,
+              "x": 620,
+              "y": 500,
+              "opacity": 0,
+              "scale": 0.55
+            },
+            {
+              "t": 10.476666666666663,
+              "opacity": 0
+            },
+            {
+              "t": 11.07533333333333,
+              "x": 620,
+              "y": 500
+            },
+            {
+              "t": 11.150166666666662,
+              "opacity": 1
+            },
+            {
+              "t": 14.218333333333328,
+              "x": 1480,
+              "y": 560
+            },
+            {
+              "t": 14.29316666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "queue-front",
+          "kind": "asset",
+          "asset": "inbox-front",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1480,
+              "y": 540,
+              "opacity": 0,
+              "scale": 0.85
+            },
+            {
+              "t": 10.476666666666663,
+              "opacity": 0
+            },
+            {
+              "t": 11.150166666666662,
+              "opacity": 1
+            },
+            {
+              "t": 14.29316666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "queue-name",
+          "kind": "text",
+          "text": "物流队列",
+          "size": 42,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1480,
+              "y": 790,
+              "opacity": 0
+            },
+            {
+              "t": 10.476666666666663,
+              "opacity": 0
+            },
+            {
+              "t": 11.150166666666662,
+              "opacity": 1
+            },
+            {
+              "t": 14.29316666666666,
+              "opacity": 1
+            },
+            {
+              "t": 14.966666666666661,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "pair": [
+            "queue",
+            "queue-front"
+          ],
+          "reason": "同一收件容器的前后层",
+          "start": 10.476666666666663,
+          "end": 14.966666666666661
+        },
+        {
+          "pair": [
+            "routed",
+            "queue"
+          ],
+          "reason": "消息送入物流队列",
+          "start": 10.476666666666663,
+          "end": 14.966666666666661
+        },
+        {
+          "pair": [
+            "routed",
+            "queue-front"
+          ],
+          "reason": "容器前沿遮住已入队消息",
+          "start": 10.476666666666663,
+          "end": 14.966666666666661
+        }
+      ],
+      "visualEvidence": {
+        "trigger": "同一条客服消息",
+        "change": "100个示意点分为80、15、5份",
+        "result": "程序将消息送入物流队列；概率数字只是教学假设",
+        "nodes": [
+          "distribution",
+          "queue",
+          "routed",
+          "queue-front"
+        ]
+      },
+      "start": 40.46666666666667,
+      "end": 55.43333333333333,
+      "label": ""
+    },
+    {
+      "id": "s5",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "信息不足时，留下人工复核",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6300000000000003,
+              "opacity": 1
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vague",
+          "kind": "surface",
+          "width": 640,
+          "height": 180,
+          "color": "#f6f0e2",
+          "fill": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 430,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6300000000000003,
+              "opacity": 1
+            },
+            {
+              "t": 2.8000000000000016,
+              "x": 230
+            },
+            {
+              "t": 6.720000000000003,
+              "x": 405
+            },
+            {
+              "t": 10.080000000000005,
+              "x": 405
+            },
+            {
+              "t": 13.300000000000006,
+              "x": 510
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vague-print",
+          "kind": "text",
+          "text": "这个订单有问题",
+          "size": 34,
+          "color": "#20363d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 35,
+              "y": 108,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6300000000000003,
+              "opacity": 1
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            }
+          ],
+          "align": "start",
+          "printedOn": "vague"
+        },
+        {
+          "id": "review",
+          "kind": "asset",
+          "asset": "review-lens",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1420,
+              "y": 510,
+              "opacity": 0,
+              "scale": 0.7
+            },
+            {
+              "t": 7.280000000000004,
+              "opacity": 0
+            },
+            {
+              "t": 7.280000000000004,
+              "rotation": -15
+            },
+            {
+              "t": 7.910000000000005,
+              "opacity": 1
+            },
+            {
+              "t": 9.800000000000004,
+              "rotation": 8
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            },
+            {
+              "t": 14.000000000000007,
+              "rotation": 0
+            }
+          ]
+        },
+        {
+          "id": "question",
+          "kind": "text",
+          "text": "物流？退款？",
+          "size": 44,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1420,
+              "y": 765,
+              "opacity": 0
+            },
+            {
+              "t": 1.960000000000001,
+              "opacity": 0
+            },
+            {
+              "t": 2.590000000000001,
+              "opacity": 1
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "limit",
+          "kind": "text",
+          "text": "能填选项 ≠ 一定选对",
+          "size": 40,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 550,
+              "y": 760,
+              "opacity": 0
+            },
+            {
+              "t": 7.0000000000000036,
+              "opacity": 0
+            },
+            {
+              "t": 7.630000000000004,
+              "opacity": 1
+            },
+            {
+              "t": 13.370000000000006,
+              "opacity": 1
+            },
+            {
+              "t": 14.000000000000007,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "消息从具体问题变得含糊",
+        "change": "消息停下，复核工具出现",
+        "result": "不让含糊判断直接触发操作",
+        "nodes": [
+          "vague",
+          "review"
+        ]
+      },
+      "start": 55.43333333333333,
+      "end": 69.43333333333334,
+      "label": ""
+    },
+    {
+      "id": "s6",
+      "nodes": [
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "信息 → 判断 → 处理",
+          "size": 52,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 245,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6554999999999999,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "in",
+          "kind": "asset",
+          "asset": "envelope",
+          "keys": [
+            {
+              "t": 0,
+              "x": 340,
+              "y": 530,
+              "scale": 0.72,
+              "opacity": 0
+            },
+            {
+              "t": 0.7283333333333332,
+              "opacity": 1
+            },
+            {
+              "t": 2.184999999999999,
+              "x": 340
+            },
+            {
+              "t": 6.554999999999999,
+              "x": 900
+            },
+            {
+              "t": 7.137666666666664,
+              "opacity": 0
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "model",
+          "kind": "dots",
+          "states": [
+            {
+              "t": 0,
+              "points": [
+                {
+                  "x": 960,
+                  "y": 525,
+                  "r": 96,
+                  "color": "#79c8c1"
+                }
+              ]
+            },
+            {
+              "t": 14.566666666666663,
+              "points": [
+                {
+                  "x": 960,
+                  "y": 525,
+                  "r": 96,
+                  "color": "#79c8c1"
+                }
+              ]
+            }
+          ],
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6554999999999999,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "out",
+          "kind": "asset",
+          "asset": "inbox",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1580,
+              "y": 530,
+              "opacity": 0,
+              "scale": 0.8
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6554999999999999,
+              "opacity": 1
+            },
+            {
+              "t": 8.739999999999997,
+              "v": 0
+            },
+            {
+              "t": 12.381666666666662,
+              "v": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "a",
+          "kind": "text",
+          "text": "给出情况",
+          "size": 42,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 340,
+              "y": 745,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "opacity": 0
+            },
+            {
+              "t": 0.6554999999999999,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "kind": "text",
+          "text": "模型判断",
+          "size": 42,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 745,
+              "opacity": 0
+            },
+            {
+              "t": 2.476333333333333,
+              "opacity": 0
+            },
+            {
+              "t": 3.131833333333333,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "kind": "text",
+          "text": "程序安排后续",
+          "size": 42,
+          "color": "#f6f0e2",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1580,
+              "y": 745,
+              "opacity": 0
+            },
+            {
+              "t": 5.535333333333332,
+              "opacity": 0
+            },
+            {
+              "t": 6.190833333333331,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "last",
+          "kind": "text",
+          "text": "判断与行动，是两件事",
+          "size": 35,
+          "color": "#de987d",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 860,
+              "opacity": 0
+            },
+            {
+              "t": 9.468333333333332,
+              "opacity": 0
+            },
+            {
+              "t": 10.123833333333332,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "decision-result",
+          "kind": "asset",
+          "asset": "envelope",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1050,
+              "y": 530,
+              "opacity": 0,
+              "scale": 0.5
+            },
+            {
+              "t": 7.283333333333331,
+              "opacity": 0
+            },
+            {
+              "t": 7.720333333333332,
+              "x": 1080,
+              "y": 490
+            },
+            {
+              "t": 7.938833333333331,
+              "opacity": 1
+            },
+            {
+              "t": 13.40133333333333,
+              "x": 1580,
+              "y": 550
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "out-front",
+          "kind": "asset",
+          "asset": "inbox-front",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1580,
+              "y": 530,
+              "opacity": 0,
+              "scale": 0.8
+            },
+            {
+              "t": 7.283333333333331,
+              "opacity": 0
+            },
+            {
+              "t": 7.938833333333331,
+              "opacity": 1
+            },
+            {
+              "t": 13.911166666666663,
+              "opacity": 1
+            },
+            {
+              "t": 14.566666666666663,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "pair": [
+            "in",
+            "model"
+          ],
+          "reason": "输入进入判断模型",
+          "start": 2.9133333333333327,
+          "end": 7.283333333333331
+        },
+        {
+          "pair": [
+            "model",
+            "decision-result"
+          ],
+          "reason": "模型给出判断结果",
+          "start": 7.283333333333331,
+          "end": 10.924999999999997
+        },
+        {
+          "pair": [
+            "out",
+            "out-front"
+          ],
+          "reason": "同一收件容器前后层",
+          "start": 7.283333333333331,
+          "end": 14.566666666666663
+        },
+        {
+          "pair": [
+            "decision-result",
+            "out"
+          ],
+          "reason": "程序接收判断结果",
+          "start": 8.739999999999997,
+          "end": 14.566666666666663
+        },
+        {
+          "pair": [
+            "decision-result",
+            "out-front"
+          ],
+          "reason": "结果进入容器后的正确遮挡",
+          "start": 8.739999999999997,
+          "end": 14.566666666666663
+        }
+      ],
+      "visualEvidence": {
+        "trigger": "软件收到信息",
+        "change": "消息进入判断，处理容器出现",
+        "result": "执行仍由开发者的程序安排",
+        "nodes": [
+          "in",
+          "model",
+          "out",
+          "decision-result",
+          "out-front"
+        ]
+      },
+      "start": 69.43333333333334,
+      "end": 84,
+      "label": ""
+    }
+  ],
+  "captions": [
+    {
+      "id": "s1-c1",
+      "text": "Jev 是一种用来做判断的人工智能模型。",
+      "keyword": "Je",
+      "action": "track",
+      "target": "e0",
+      "start": 0,
+      "end": 3.8333333333333335,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c2",
+      "text": "开发者把它接进软件，交给它文字等信息。",
+      "keyword": "开发",
+      "action": "track",
+      "target": "e1",
+      "start": 3.8333333333333335,
+      "end": 7.466666666666667,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c3",
+      "text": "它评估问题，返回软件能直接使用的结果。",
+      "keyword": "它评",
+      "action": "track",
+      "target": "e2",
+      "start": 7.466666666666667,
+      "end": 11.133333333333333,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c4",
+      "text": "你可以先把它理解成软件里的判断助手。",
+      "keyword": "你可",
+      "action": "track",
+      "target": "e2",
+      "start": 11.133333333333333,
+      "end": 14.566666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s2-c1",
+      "text": "比如客服收到一句：包裹三天还没到。",
+      "keyword": "比如",
+      "action": "track",
+      "target": "e0",
+      "start": 14.566666666666666,
+      "end": 17.833333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c2",
+      "text": "人能看出这可能是物流问题。",
+      "keyword": "人能",
+      "action": "track",
+      "target": "e1",
+      "start": 17.833333333333332,
+      "end": 20.333333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c3",
+      "text": "但软件要知道，该把消息送给哪个部门。",
+      "keyword": "但软",
+      "action": "track",
+      "target": "e2",
+      "start": 20.333333333333332,
+      "end": 23.766666666666666,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c4",
+      "text": "判断助手负责分析意思，程序负责安排后续。",
+      "keyword": "判断",
+      "action": "track",
+      "target": "e2",
+      "start": 23.766666666666666,
+      "end": 27.6,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s3-c1",
+      "text": "以选择题功能为例，先列出允许的选项。",
+      "keyword": "以选",
+      "action": "track",
+      "target": "e0",
+      "start": 27.6,
+      "end": 31.066666666666666,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c2",
+      "text": "我们设为：物流、退款、其他。",
+      "keyword": "我们",
+      "action": "track",
+      "target": "e1",
+      "start": 31.066666666666666,
+      "end": 33.766666666666666,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c3",
+      "text": "再问：这条客户消息应该交给哪一类？",
+      "keyword": "再问",
+      "action": "track",
+      "target": "e2",
+      "start": 33.766666666666666,
+      "end": 37,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c4",
+      "text": "结果按固定字段返回，这叫结构化输出。",
+      "keyword": "结果",
+      "action": "track",
+      "target": "e2",
+      "start": 37,
+      "end": 40.46666666666667,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s4-c1",
+      "text": "假设返回：物流百分之八十，退款十五，其他五。",
+      "keyword": "假设",
+      "action": "track",
+      "target": "e0",
+      "start": 40.46666666666667,
+      "end": 44.7,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c2",
+      "text": "这些概率表示模型对各选项的判断倾向。",
+      "keyword": "这些",
+      "action": "track",
+      "target": "e1",
+      "start": 44.7,
+      "end": 48.13333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c3",
+      "text": "数字只是教学假设，不是实际测试结果。",
+      "keyword": "数字",
+      "action": "track",
+      "target": "e2",
+      "start": 48.13333333333333,
+      "end": 51.6,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c4",
+      "text": "程序可以按规则，把这条消息送进物流队列。",
+      "keyword": "程序",
+      "action": "track",
+      "target": "e2",
+      "start": 51.6,
+      "end": 55.43333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s5-c1",
+      "text": "现在把消息改成：这个订单有问题。",
+      "keyword": "现在",
+      "action": "track",
+      "target": "e0",
+      "start": 55.43333333333333,
+      "end": 58.5,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c2",
+      "text": "信息少了，可能是物流，也可能需要退款。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "e1",
+      "start": 58.5,
+      "end": 62.13333333333333,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c3",
+      "text": "即使格式完全正确，判断仍然可能出错。",
+      "keyword": "即使",
+      "action": "track",
+      "target": "e2",
+      "start": 62.13333333333333,
+      "end": 65.6,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c4",
+      "text": "所以资料不足或风险高时，可以交给人复核。",
+      "keyword": "所以",
+      "action": "track",
+      "target": "e2",
+      "start": 65.6,
+      "end": 69.43333333333334,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s6-c1",
+      "text": "记住：Jev 是给软件提供判断的模型。",
+      "keyword": "记住",
+      "action": "track",
+      "target": "e0",
+      "start": 69.43333333333334,
+      "end": 73.06666666666666,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c2",
+      "text": "开发者定义问题、选项和后续处理规则。",
+      "keyword": "开发",
+      "action": "track",
+      "target": "e1",
+      "start": 73.06666666666666,
+      "end": 76.53333333333333,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c3",
+      "text": "模型返回结果，程序决定怎么用这个结果。",
+      "keyword": "模型",
+      "action": "track",
+      "target": "e2",
+      "start": 76.53333333333333,
+      "end": 80.16666666666667,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c4",
+      "text": "它能辅助自动化，但不能保证每次判断都对。",
+      "keyword": "它能",
+      "action": "track",
+      "target": "e2",
+      "start": 80.16666666666667,
+      "end": 84,
+      "sceneId": "s6"
+    }
+  ]
+}

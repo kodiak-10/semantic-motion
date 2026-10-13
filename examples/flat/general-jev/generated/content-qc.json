@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "definition": "Jev 是一种用来做判断的人工智能模型。",
+  "scenes": 6,
+  "scope": "Checks source references, prerequisites, glossary, required dimensions, timing and exact script binding; not a factual or aesthetic certification"
+}

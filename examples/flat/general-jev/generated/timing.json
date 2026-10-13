@@ -1,0 +1,247 @@
+{
+  "fps": 30,
+  "duration": 84,
+  "audio_aligned": false,
+  "markers": [
+    {
+      "id": "s1-c1",
+      "text": "Jev 是一种用来做判断的人工智能模型。",
+      "keyword": "Je",
+      "action": "track",
+      "target": "e0",
+      "start": 0,
+      "end": 3.8333333333333335,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c2",
+      "text": "开发者把它接进软件，交给它文字等信息。",
+      "keyword": "开发",
+      "action": "track",
+      "target": "e1",
+      "start": 3.8333333333333335,
+      "end": 7.466666666666667,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c3",
+      "text": "它评估问题，返回软件能直接使用的结果。",
+      "keyword": "它评",
+      "action": "track",
+      "target": "e2",
+      "start": 7.466666666666667,
+      "end": 11.133333333333333,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c4",
+      "text": "你可以先把它理解成软件里的判断助手。",
+      "keyword": "你可",
+      "action": "track",
+      "target": "e2",
+      "start": 11.133333333333333,
+      "end": 14.566666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s2-c1",
+      "text": "比如客服收到一句：包裹三天还没到。",
+      "keyword": "比如",
+      "action": "track",
+      "target": "e0",
+      "start": 14.566666666666666,
+      "end": 17.833333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c2",
+      "text": "人能看出这可能是物流问题。",
+      "keyword": "人能",
+      "action": "track",
+      "target": "e1",
+      "start": 17.833333333333332,
+      "end": 20.333333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c3",
+      "text": "但软件要知道，该把消息送给哪个部门。",
+      "keyword": "但软",
+      "action": "track",
+      "target": "e2",
+      "start": 20.333333333333332,
+      "end": 23.766666666666666,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c4",
+      "text": "判断助手负责分析意思，程序负责安排后续。",
+      "keyword": "判断",
+      "action": "track",
+      "target": "e2",
+      "start": 23.766666666666666,
+      "end": 27.6,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s3-c1",
+      "text": "以选择题功能为例，先列出允许的选项。",
+      "keyword": "以选",
+      "action": "track",
+      "target": "e0",
+      "start": 27.6,
+      "end": 31.066666666666666,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c2",
+      "text": "我们设为：物流、退款、其他。",
+      "keyword": "我们",
+      "action": "track",
+      "target": "e1",
+      "start": 31.066666666666666,
+      "end": 33.766666666666666,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c3",
+      "text": "再问：这条客户消息应该交给哪一类？",
+      "keyword": "再问",
+      "action": "track",
+      "target": "e2",
+      "start": 33.766666666666666,
+      "end": 37,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c4",
+      "text": "结果按固定字段返回，这叫结构化输出。",
+      "keyword": "结果",
+      "action": "track",
+      "target": "e2",
+      "start": 37,
+      "end": 40.46666666666667,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s4-c1",
+      "text": "假设返回：物流百分之八十，退款十五，其他五。",
+      "keyword": "假设",
+      "action": "track",
+      "target": "e0",
+      "start": 40.46666666666667,
+      "end": 44.7,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c2",
+      "text": "这些概率表示模型对各选项的判断倾向。",
+      "keyword": "这些",
+      "action": "track",
+      "target": "e1",
+      "start": 44.7,
+      "end": 48.13333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c3",
+      "text": "数字只是教学假设，不是实际测试结果。",
+      "keyword": "数字",
+      "action": "track",
+      "target": "e2",
+      "start": 48.13333333333333,
+      "end": 51.6,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c4",
+      "text": "程序可以按规则，把这条消息送进物流队列。",
+      "keyword": "程序",
+      "action": "track",
+      "target": "e2",
+      "start": 51.6,
+      "end": 55.43333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s5-c1",
+      "text": "现在把消息改成：这个订单有问题。",
+      "keyword": "现在",
+      "action": "track",
+      "target": "e0",
+      "start": 55.43333333333333,
+      "end": 58.5,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c2",
+      "text": "信息少了，可能是物流，也可能需要退款。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "e1",
+      "start": 58.5,
+      "end": 62.13333333333333,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c3",
+      "text": "即使格式完全正确，判断仍然可能出错。",
+      "keyword": "即使",
+      "action": "track",
+      "target": "e2",
+      "start": 62.13333333333333,
+      "end": 65.6,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c4",
+      "text": "所以资料不足或风险高时，可以交给人复核。",
+      "keyword": "所以",
+      "action": "track",
+      "target": "e2",
+      "start": 65.6,
+      "end": 69.43333333333334,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s6-c1",
+      "text": "记住：Jev 是给软件提供判断的模型。",
+      "keyword": "记住",
+      "action": "track",
+      "target": "e0",
+      "start": 69.43333333333334,
+      "end": 73.06666666666666,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c2",
+      "text": "开发者定义问题、选项和后续处理规则。",
+      "keyword": "开发",
+      "action": "track",
+      "target": "e1",
+      "start": 73.06666666666666,
+      "end": 76.53333333333333,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c3",
+      "text": "模型返回结果，程序决定怎么用这个结果。",
+      "keyword": "模型",
+      "action": "track",
+      "target": "e2",
+      "start": 76.53333333333333,
+      "end": 80.16666666666667,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c4",
+      "text": "它能辅助自动化，但不能保证每次判断都对。",
+      "keyword": "它能",
+      "action": "track",
+      "target": "e2",
+      "start": 80.16666666666667,
+      "end": 84,
+      "sceneId": "s6"
+    }
+  ]
+}
