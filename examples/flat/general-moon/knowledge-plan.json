@@ -1,0 +1,355 @@
+{
+  "input": {
+    "topic": "月亮为什么会变圆变缺",
+    "audience_level": "普通大众",
+    "duration": 42,
+    "explanation_depth": "quick",
+    "aspect_ratio": "16:9",
+    "language": "zh-CN",
+    "audio_mode": "silent"
+  },
+  "learning_goal": "区分月球形状和可见亮面，解释月相与月食的不同。",
+  "sources": [
+    {
+      "id": "nasa",
+      "url": "https://science.nasa.gov/moon/moon-phases/",
+      "title": "NASA Moon Phases",
+      "accessed": "2026-10-14"
+    },
+    {
+      "id": "eclipse",
+      "url": "https://science.nasa.gov/moon/eclipses/",
+      "title": "NASA Eclipses and the Moon",
+      "accessed": "2026-10-14"
+    }
+  ],
+  "claims": [
+    {
+      "id": "s1",
+      "text": "月相，就是从地球看见的月亮亮面形状。月亮没有被咬掉；它反射太阳光。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "s2",
+      "text": "通常，太阳照亮月球的一半。另一半背着太阳，不是被地球挡住。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "s3",
+      "text": "月球绕地球运动，我们看亮面的角度在变。看见的亮面多，就更圆；看见得少，就更弯。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa"
+      ]
+    },
+    {
+      "id": "s4",
+      "text": "地球的影子遮到月亮，才是月食。日常的圆缺变化，不需要地球挡光。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa",
+        "eclipse"
+      ]
+    },
+    {
+      "id": "s5",
+      "text": "月球一直是球，变化的是我们看见的亮面。记住：月相看角度，月食才是地球遮光。",
+      "kind": "fact",
+      "source_ids": [
+        "nasa",
+        "eclipse"
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s1",
+      "dimension": "definition",
+      "title": "月亮，被谁咬了一口？",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "moon",
+          "label": "月球",
+          "glyph": "document"
+        },
+        {
+          "id": "view",
+          "label": "观察角度",
+          "glyph": "document"
+        }
+      ],
+      "cues": [
+        {
+          "id": "s1-c1",
+          "text": "月相，就是从地球看见的月亮亮面形状。",
+          "keyword": "亮面",
+          "action": "morph",
+          "target": "moon"
+        },
+        {
+          "id": "s1-c2",
+          "text": "月亮没有被咬掉；它反射太阳光。",
+          "keyword": "月亮",
+          "action": "morph",
+          "target": "view"
+        }
+      ],
+      "note": "形状与光照示意；大小、距离不按比例。",
+      "claim_ids": [
+        "s1"
+      ],
+      "requires": [],
+      "teaches": [
+        "c1"
+      ],
+      "terms": [],
+      "visual_reason": "球体保留完整轮廓，改变照明与观察关系，展示可见亮面变化。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s2",
+      "dimension": "mechanism",
+      "title": "一半白天，一半黑夜",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "moon",
+          "label": "月球",
+          "glyph": "document"
+        },
+        {
+          "id": "view",
+          "label": "观察角度",
+          "glyph": "document"
+        }
+      ],
+      "cues": [
+        {
+          "id": "s2-c1",
+          "text": "通常，太阳照亮月球的一半。",
+          "keyword": "月球",
+          "action": "morph",
+          "target": "moon"
+        },
+        {
+          "id": "s2-c2",
+          "text": "另一半背着太阳，不是被地球挡住。",
+          "keyword": "地球",
+          "action": "morph",
+          "target": "view"
+        }
+      ],
+      "note": "形状与光照示意；大小、距离不按比例。",
+      "claim_ids": [
+        "s2"
+      ],
+      "requires": [
+        "c1"
+      ],
+      "teaches": [
+        "c2"
+      ],
+      "terms": [],
+      "visual_reason": "球体保留完整轮廓，改变照明与观察关系，展示可见亮面变化。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s3",
+      "dimension": "example",
+      "title": "换个位置，看见不同亮面",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "moon",
+          "label": "月球",
+          "glyph": "document"
+        },
+        {
+          "id": "view",
+          "label": "观察角度",
+          "glyph": "document"
+        }
+      ],
+      "cues": [
+        {
+          "id": "s3-c1",
+          "text": "月球绕地球运动，我们看亮面的角度在变。",
+          "keyword": "亮面",
+          "action": "morph",
+          "target": "moon"
+        },
+        {
+          "id": "s3-c2",
+          "text": "看见的亮面多，就更圆；看见得少，就更弯。",
+          "keyword": "亮面",
+          "action": "morph",
+          "target": "view"
+        }
+      ],
+      "note": "形状与光照示意；大小、距离不按比例。",
+      "claim_ids": [
+        "s3"
+      ],
+      "requires": [
+        "c2"
+      ],
+      "teaches": [
+        "c3"
+      ],
+      "terms": [],
+      "visual_reason": "球体保留完整轮廓，改变照明与观察关系，展示可见亮面变化。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s4",
+      "dimension": "limitations",
+      "title": "月相与月食，要分开",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "moon",
+          "label": "月球",
+          "glyph": "document"
+        },
+        {
+          "id": "view",
+          "label": "观察角度",
+          "glyph": "document"
+        }
+      ],
+      "cues": [
+        {
+          "id": "s4-c1",
+          "text": "地球的影子遮到月亮，才是月食。",
+          "keyword": "地球",
+          "action": "morph",
+          "target": "moon"
+        },
+        {
+          "id": "s4-c2",
+          "text": "日常的圆缺变化，不需要地球挡光。",
+          "keyword": "地球",
+          "action": "morph",
+          "target": "view"
+        }
+      ],
+      "note": "形状与光照示意；大小、距离不按比例。",
+      "claim_ids": [
+        "s4"
+      ],
+      "requires": [
+        "c3"
+      ],
+      "teaches": [
+        "c4"
+      ],
+      "terms": [],
+      "visual_reason": "球体保留完整轮廓，改变照明与观察关系，展示可见亮面变化。",
+      "layout": "diagonal"
+    },
+    {
+      "id": "s5",
+      "dimension": "takeaway",
+      "title": "变的是亮面，不是月球",
+      "relation": "process",
+      "entities": [
+        {
+          "id": "moon",
+          "label": "月球",
+          "glyph": "document"
+        },
+        {
+          "id": "view",
+          "label": "观察角度",
+          "glyph": "document"
+        }
+      ],
+      "cues": [
+        {
+          "id": "s5-c1",
+          "text": "月球一直是球，变化的是我们看见的亮面。",
+          "keyword": "亮面",
+          "action": "morph",
+          "target": "moon"
+        },
+        {
+          "id": "s5-c2",
+          "text": "记住：月相看角度，月食才是地球遮光。",
+          "keyword": "地球",
+          "action": "morph",
+          "target": "view"
+        }
+      ],
+      "note": "形状与光照示意；大小、距离不按比例。",
+      "claim_ids": [
+        "s5"
+      ],
+      "requires": [
+        "c4"
+      ],
+      "teaches": [
+        "c5"
+      ],
+      "terms": [],
+      "visual_reason": "球体保留完整轮廓，改变照明与观察关系，展示可见亮面变化。",
+      "layout": "diagonal"
+    }
+  ],
+  "scope": {
+    "included": [
+      "definition",
+      "mechanism",
+      "example",
+      "limitations",
+      "takeaway"
+    ],
+    "omitted": [
+      {
+        "dimension": "motivation",
+        "reason": "短片聚焦亮面、观察角度及月食区别。"
+      },
+      {
+        "dimension": "comparison",
+        "reason": "短片聚焦亮面、观察角度及月食区别。"
+      },
+      {
+        "dimension": "use-cases",
+        "reason": "短片聚焦亮面、观察角度及月食区别。"
+      },
+      {
+        "dimension": "misconceptions",
+        "reason": "短片聚焦亮面、观察角度及月食区别。"
+      }
+    ]
+  },
+  "comprehension_check": {
+    "question": "半月时，月球真的只剩一半吗？",
+    "answer": "没有，月球仍是球；从地球只看见部分被太阳照亮的表面。"
+  },
+  "foundation": {
+    "concept": "月相",
+    "category": "形状",
+    "plain_definition": "月相，就是从地球看见的月亮亮面形状。",
+    "definition_cue_id": "s1-c1"
+  },
+  "review": {
+    "accuracy": 4,
+    "completeness": 4,
+    "clarity": 4,
+    "analogy_quality": 4,
+    "jargon_control": 4,
+    "visual_grounding": 4,
+    "notes": [
+      "核心主张核对 NASA 月相和月食资料。仅解释日常月相，不展开轨道倾角、周期及月食颜色。",
+      "球面为原创示意纹理；不是真实月表或大陆地图。大小与距离不按比例。",
+      "画面角度与亮面比例一致；不使用饼干缺口类比。审美不由该评分证明。"
+    ]
+  }
+}
