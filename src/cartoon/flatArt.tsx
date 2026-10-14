@@ -1,3 +1,5 @@
+import {LightSource} from './LightSource';
+import {LitSphere} from './LitSphere';
 import React from 'react';
 import {ParcelCutaway} from './ParcelCutaway';
 import {OfficeArt,officeAssets} from './officeArt';
@@ -7,6 +9,8 @@ export function FlatArt({name,v=1,t=0}:{name:string;v?:number;t?:number}){
  const paperId='paper'+React.useId().replaceAll(':','');
  const stroke={stroke:ink,strokeWidth:6,strokeLinejoin:'round' as const,strokeLinecap:'round' as const};
  if((officeAssets as readonly string[]).includes(name))return <OfficeArt name={name} v={v} t={t}/>;
+ if(name==='light-source')return <LightSource/>;
+ if(name==='rocky-sphere'||name==='ocean-sphere')return <LitSphere angle={v} ocean={name==='ocean-sphere'}/>;
  if(name==='parcel-cutaway')return <ParcelCutaway v={v}/>;
  switch(name){
  case 'market':return <g><rect width="1920" height="1080" fill="#f5e9cf"/><path d="M0 765H1920V1080H0Z" fill="#dccbaa"/><path d="M0 807H1920M0 976H1920M200 765L65 1080M700 765L670 1080M1200 765L1280 1080M1700 765L1850 1080" stroke="#c8b68f" strokeWidth="3"/>

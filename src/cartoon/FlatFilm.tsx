@@ -6,13 +6,20 @@ import {FlatArt} from './flatArt';
 import {sampleNodePose,sampleFilmTime,displayText,sampleDots,type FlatFilmData} from './flatEngine';
 export type {FlatFilmData} from './flatEngine';
 export function FlatFilm({film}:{film:FlatFilmData}){
+ const light=film.style_profile==='tech-light';
+ const tech=film.style_profile==='tech';
+ const midnight=film.style_profile==='midnight'||tech;
  const studio=film.style_profile==='studio';
- const textColor=(color?:string)=>studio?({'#f6f0e2':'#243238','#79c8c1':'#16786f','#de987d':'#ad5438','#70baff':'#245faa','#b4bcc6':'#596675'}[color||'']||color||'#243238'):(color||'#243c3a');
- const paper=film.style_profile==='paper';const ink=film.style_profile==='ink';
+ const textColor=(color?:string)=>midnight?({'#f6f0e2':'#f0f4ff','#79c8c1':'#92b1ff','#f5cd75':'#ffa66b','#b4bcc6':'#9aaacf'}[color||'']||color||'#f0f4ff'):studio?({'#f6f0e2':'#243238','#79c8c1':'#16786f','#de987d':'#ad5438','#70baff':'#245faa','#b4bcc6':'#596675'}[color||'']||color||'#243238'):(color||'#243c3a');
+ const paper=film.style_profile==='paper';const ink=film.style_profile==='ink'||midnight||light;
  const playback=useCurrentFrame()/film.fps;const t=sampleFilmTime(film,playback);const shot=film.shots.find(s=>t>=s.start&&t<s.end)!;const local=t-shot.start;
  const cap=film.captions.find(c=>playback>=c.start&&playback<c.end);const pieces=cap?.keyword?cap.text.split(cap.keyword):[];
- return <AbsoluteFill style={{background:studio?'#f3f1eb':ink?'#10282e':'#f5e9cf',fontFamily:'Semantic Noto, sans-serif'}}><FontGate/>
- {ink&&<AbsoluteFill style={{background:'radial-gradient(ellipse at 64% 45%, #24505a 0%, #132d34 42%, #0c1d24 100%)'}}/>}
+ return <AbsoluteFill style={{background:light?'#ffffff':midnight?'#070b1b':studio?'#f3f1eb':ink?'#10282e':'#f5e9cf',fontFamily:'Semantic Noto, sans-serif'}}><FontGate/>
+ {midnight&&<AbsoluteFill style={{background:'radial-gradient(ellipse at 77% 48%, #182859 0%, #0d1531 36%, #070b1b 74%)'}}/>}
+ {midnight&&!tech&&<svg width="1920" height="1080" style={{position:'absolute',inset:0}}>{Array.from({length:95},(_,i)=><circle key={i} cx={(i*701+37)%1920} cy={(i*317+59)%900} r={i%9===0?1.6:.8} fill="#b5c8ff" opacity={.1+(i%4)*.05}/>)}</svg>}
+ {light&&<AbsoluteFill style={{background:'linear-gradient(180deg,#ffffff 0%,#ffffff 76%,#f5f9ff 100%)'}}/>}
+ {tech&&<AbsoluteFill style={{background:'radial-gradient(ellipse at 82% 52%,rgba(96,62,190,.16),transparent 55%),linear-gradient(rgba(119,151,240,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(119,151,240,.035) 1px,transparent 1px)',backgroundSize:'auto,48px 48px,48px 48px'}}/>}
+ {ink&&!midnight&&!light&&<AbsoluteFill style={{background:'radial-gradient(ellipse at 64% 45%, #24505a 0%, #132d34 42%, #0c1d24 100%)'}}/>}
  {studio&&<AbsoluteFill style={{pointerEvents:'none'}}>
   <div style={{position:'absolute',inset:'145px 64px 145px',backgroundImage:'radial-gradient(#bdc4bf 1px, transparent 1px)',backgroundSize:'40px 40px',opacity:.23}}/>
   <div style={{position:'absolute',left:80,right:80,top:82,height:1,background:'#d6dcd5'}}/>
@@ -22,17 +29,17 @@ export function FlatFilm({film}:{film:FlatFilmData}){
   <div style={{position:'absolute',left:80,right:80,bottom:144,height:1,background:'#d6dcd5'}}/>
  </AbsoluteFill>}
  <svg style={{position:'absolute',inset:0}} viewBox="0 0 1920 1080" width="1920" height="1080">
- <defs><filter id="surface-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="18" floodColor="#000" floodOpacity={studio?".08":".22"}/></filter></defs>
+ <defs><filter id="surface-shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="18" floodColor="#000" floodOpacity={light?".045":studio?".08":".22"}/></filter></defs>
  {shot.nodes.map(node=>{const p=sampleNodePose(node,shot.nodes,local);return <g key={node.id} opacity={p.opacity} transform={`translate(${p.x} ${p.y}) rotate(${p.rotation}) scale(${p.scale})`}>
  {node.kind==='solid'?<Solid3D node={node} pose={p}/>:node.kind==='image'?<foreignObject width={node.width} height={node.height}><Img src={staticFile(node.src!)} style={{width:'100%',height:'100%',objectFit:'contain'}}/></foreignObject>:node.kind==='asset'?<FlatArt name={node.asset!} v={p.v} t={t}/>:node.kind==='rect'?<rect width={node.width} height={node.height} fill={node.color}/>:
- node.kind==='surface'?<g filter="url(#surface-shadow)"><rect width={node.width} height={node.height} rx={node.radius??16} fill={studio&&node.color==='#f6f0e2'?'#fffefa':node.color||'#f6f0e2'}/><path d={`M0 0H${node.width}V12H0Z`} fill={node.fill||'#c45d43'}/></g>:
+ node.kind==='surface'?<g filter="url(#surface-shadow)"><rect width={node.width} height={node.height} rx={node.radius??16} stroke={light?'#cfdef3':undefined} strokeWidth={light?1.5:undefined} fill={studio&&node.color==='#f6f0e2'?'#fffefa':node.color||'#f6f0e2'}/><path d={`M0 0H${node.width}V12H0Z`} fill={node.fill||'#c45d43'}/></g>:
  node.kind==='path'?<path d={node.path} fill={node.fill||'none'} stroke={studio?textColor(node.color):node.color} strokeWidth={node.strokeWidth||2} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1-p.v}/>:
  node.kind==='dots'?<g>{sampleDots(node.states!,local).map((d,i)=><circle key={i} cx={d.x} cy={d.y} r={d.r} fill={d.color} stroke={studio?'#788780':undefined} strokeWidth={studio?.65:0}/>)}</g>:<text x="0" y="0" textAnchor={node.align||'middle'} fill={textColor(node.color)} fontSize={node.size||44} fontWeight="750">{displayText(node,p,shot.nodes,local)}</text>}
  </g>})}
  </svg>
  {!ink&&!studio&&<div style={{position:'absolute',top:29,left:80,color:paper?'#393c39':'#fffae9',fontSize:25,fontWeight:650,letterSpacing:2}}>{film.series}</div>}
  {!ink&&!studio&&<div style={{position:'absolute',top:29,right:80,color:paper?'#393c39':'#fffae9',fontSize:24}}>{shot.label}</div>}
- {cap&&<div style={{position:'absolute',left:180,right:180,bottom:44,textAlign:'center',fontSize:36,fontWeight:600,lineHeight:1.5,color:studio?'#243238':paper?'#393c39':'#fff9e9'}}><span style={{display:'inline-block',background:studio?'#fffefa':paper?'rgba(245,235,212,.94)':ink?'rgba(10,26,32,.88)':'#243c3a',padding:'16px 32px',borderRadius:studio?8:14,border:studio?'1px solid #dce1d9':undefined,boxShadow:studio?'0 5px 18px rgba(36,50,56,.04)':undefined}}>{pieces.length>1?pieces.map((p,i)=><React.Fragment key={i}>{i>0&&<strong style={{color:studio?'#16786f':paper?'#92523a':'#f5cd75'}}>{cap.keyword}</strong>}{p}</React.Fragment>):cap.text}</span></div>}
+ {cap&&<div style={{position:'absolute',left:180,right:180,bottom:44,textAlign:'center',fontSize:36,fontWeight:600,lineHeight:1.5,color:light?'#182c4c':midnight?'#eef3ff':studio?'#243238':paper?'#393c39':'#fff9e9'}}><span style={{display:'inline-block',background:light?'rgba(239,246,255,.98)':midnight?'rgba(5,10,25,.92)':studio?'#fffefa':paper?'rgba(245,235,212,.94)':ink?'rgba(10,26,32,.88)':'#243c3a',padding:'16px 32px',borderRadius:studio?8:14,border:light?'1px solid #c9dcfa':studio?'1px solid #dce1d9':undefined,boxShadow:studio?'0 5px 18px rgba(36,50,56,.04)':undefined}}>{pieces.length>1?pieces.map((p,i)=><React.Fragment key={i}>{i>0&&<strong style={{color:light?'#1457d9':tech?'#b7a5ff':midnight?'#ffa66b':studio?'#16786f':paper?'#92523a':'#f5cd75'}}>{cap.keyword}</strong>}{p}</React.Fragment>):cap.text}</span></div>}
  {film.reviewOverlay===true&&film.footer&&<div style={{position:'absolute',left:80,bottom:14,fontSize:18,color:ink?'#9cb3b8':'#393c39'}}>{film.footer}</div>}
  {film.audio&&<Audio src={staticFile(film.audio)}/>}
  </AbsoluteFill>;
