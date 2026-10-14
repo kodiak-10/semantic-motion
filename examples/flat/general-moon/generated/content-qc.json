@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "definition": "月相，就是从地球看见的月亮亮面形状。",
+  "scenes": 5,
+  "scope": "Checks source references, prerequisites, glossary, required dimensions, timing and exact script binding; not a factual or aesthetic certification"
+}
