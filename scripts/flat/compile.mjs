@@ -10,7 +10,7 @@ export function compileFlat(p,staging){
   const at=x=>{if(!Number.isFinite(x)||x<0||x>1)throw Error('分镜时间必须在0–1范围');return x*duration;};
   return {...stage,start:scene.start,end:scene.end,label:'',nodes:stage.nodes.map(n=>({...n,keys:n.keys.map(k=>({...k,t:at(k.t)})),...(n.states?{states:n.states.map(s=>({...s,t:at(s.t)}))}:{})})),contacts:(stage.contacts||[]).map(c=>({...c,start:at(c.start),end:at(c.end)}))};
  });
- const f={mode:'flat2d',topic:p.input.topic,width:1920,height:1080,fps:content.fps,duration:content.duration,series:'',style_profile:staging.style_profile||'studio',reviewOverlay:false,knowledgePlan:p,shots,captions:content.captions};
+ const f={mode:'flat2d',topic:p.input.topic,width:1920,height:1080,fps:content.fps,duration:content.duration,series:'',style_profile:staging.style_profile||'tech-light',reviewOverlay:false,knowledgePlan:p,shots,captions:content.captions};
  validateFlat(f);validateFlatContent(f);const objects=objectAudit(f);if(!objects.passed)throw Error('物体碰撞：'+JSON.stringify(objects.failures));return f;
 }
 export function writeFlat(f,dir){
