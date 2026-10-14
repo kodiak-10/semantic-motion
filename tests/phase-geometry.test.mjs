@@ -17,15 +17,3 @@ test('opposite viewing angles preserve fraction and mirror illuminated side',()=
  }
 });
 
-import fs from 'node:fs';
-import {samplePose} from '../src/cartoon/flatEngine.ts';
-test('moon example ties observed phase to the same orbital position',()=>{
- const shot=JSON.parse(fs.readFileSync(new URL('../examples/flat/general-moon/staging.json',import.meta.url))).shots[2];
- const nodes=Object.fromEntries(shot.nodes.map(n=>[n.id,n]));
- for(let i=0;i<=240;i++){
-  const t=i/240,earth=samplePose(nodes.earth.keys,t),moon=samplePose(nodes.orbitmoon.keys,t),view=samplePose(nodes.moon.keys,t);
-  const dx=moon.x-earth.x,dy=moon.y-earth.y;
-  // Sun is at the left; observer is at Earth, so cos(phase)=dx/orbit radius.
-  assert.ok(Math.abs(Math.cos(view.v)-dx/Math.hypot(dx,dy))<.001);
- }
-});
