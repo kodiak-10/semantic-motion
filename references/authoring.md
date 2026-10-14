@@ -2,11 +2,11 @@
 
 ## 环境与样例
 
-在项目根目录运行 `npm ci`、`npm run setup`。Node.js 至少 22.18。`npm run check` 检查编译和回归；`npm run demo` 渲染天空样例，`npm run demo:jev` 渲染 AI 样例。
+在项目根目录运行 `npm ci`、`npm run setup`。Node.js 至少 22.18。`npm run check` 检查编译和回归；`npm run demo` 渲染当前白底蓝色样例，`npm run demo:jev` 渲染 AI 样例。
 
 ## 新主题的数据
 
-读取 `schemas/knowledge-plan.schema.json` 和 `examples/flat/general-sky/knowledge-plan.json` 了解格式，读取同目录 staging.json 了解动画声明。
+读取 `schemas/knowledge-plan.schema.json` 和 `examples/flat/general-transformer/knowledge-plan.json` 了解格式，读取同目录 staging.json 了解动画声明。
 
 - knowledge-plan：input、sources、claims、foundation、glossary、scenes、review 等字段以 schema 为准。foundation.plain_definition 必须出现在实际定义场景的讲稿中。input.style_profile 的 `editorial-notes` 是内容计划格式；画面的风格在 staging.style_profile 设置为 `tech-light`（白底蓝色）、`tech`（深色）、`studio`、`ink` 或 `midnight`。
 - scenes 的 cues 是语义短句，决定字幕和时间；requires / teaches 表达前置知识。不同主题按事实设计结构，不能照搬样例说法。
@@ -61,7 +61,7 @@ npm run render -- projects/my-topic/generated/film.json out/my-topic-frame.png 3
 
 rx/ry/rz 是角度；x/y 是画面中心位置，solid 尺寸以中心为原点。cameraDistance 必须大于物体外接球半径。动画与布局检查调用同一投影函数，因此检查会覆盖旋转时变大的轮廓。默认配色适合浅色 Studio；文字保持在独立平面上，不随物体旋转损害阅读。
 
-`npm run demo:3d` 生成 12 秒组件演示；`npm run preview:3d` 生成预览。这个文件使用 study 模式，因为它是动画能力展示，没有伪装成经过事实核查的完整科普视频。为正式知识主题使用 3D 时，仍须从 knowledge-plan + staging 编译，并通过完整内容和布局检查。
+三维节点是可选通用能力，默认制作与预览以 Tech Light 白底蓝色效果为准。
 
 ## Midnight 配色
 
