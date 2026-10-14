@@ -1,0 +1,247 @@
+{
+  "fps": 30,
+  "duration": 96,
+  "audio_aligned": false,
+  "markers": [
+    {
+      "id": "s1-c1",
+      "text": "Transformer 是一种神经网络架构。",
+      "keyword": "架构",
+      "action": "track",
+      "target": "input",
+      "start": 0,
+      "end": 4.5,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c2",
+      "text": "架构规定信息怎样处理，训练学出具体参数。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 4.5,
+      "end": 8.566666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c3",
+      "text": "用一句话看它工作：外面正在下什么？",
+      "keyword": "用一",
+      "action": "track",
+      "target": "output",
+      "start": 8.566666666666666,
+      "end": 12.066666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s2-c1",
+      "text": "文字先被拆成片段，这些片段叫 token。",
+      "keyword": "片段",
+      "action": "track",
+      "target": "input",
+      "start": 12.066666666666666,
+      "end": 16.333333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c2",
+      "text": "每个片段变成一组数字，用来表示它的特征。",
+      "keyword": "数字",
+      "action": "track",
+      "target": "output",
+      "start": 16.333333333333332,
+      "end": 20.433333333333334,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c3",
+      "text": "还要加入位置信息，才能区分文字的顺序。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 20.433333333333334,
+      "end": 24.3,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s3-c1",
+      "text": "注意力会为当前位置，计算不同来源的权重。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "input",
+      "start": 24.3,
+      "end": 28.4,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c2",
+      "text": "模型把当前位置和其他可见位置做匹配。",
+      "keyword": "模型",
+      "action": "track",
+      "target": "output",
+      "start": 28.4,
+      "end": 32.06666666666667,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c3",
+      "text": "匹配结果变成权重，再决定各取多少信息。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 32.06666666666667,
+      "end": 35.93333333333333,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s4-c1",
+      "text": "比如三份信息，各有一组数字作为内容。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "input",
+      "start": 35.93333333333333,
+      "end": 39.63333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c2",
+      "text": "按六成、三成和一成混合，得到新的数字。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "output",
+      "start": 39.63333333333333,
+      "end": 43.5,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c3",
+      "text": "这些数字只是教学示意，不是真实模型测量。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "output",
+      "start": 43.5,
+      "end": 47.6,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s5-c1",
+      "text": "多头注意力用多组计算，并行组合上下文。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "input",
+      "start": 47.6,
+      "end": 51.46666666666667,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c2",
+      "text": "各路结果汇合后，还有前馈网络进一步加工。",
+      "keyword": "各路",
+      "action": "track",
+      "target": "output",
+      "start": 51.46666666666667,
+      "end": 55.56666666666667,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c3",
+      "text": "多层重复更新表示，也保留原信息帮助传递。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 55.56666666666667,
+      "end": 59.63333333333333,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s6-c1",
+      "text": "以逐步生成文字的模型为例，它先给出概率。",
+      "keyword": "概率",
+      "action": "track",
+      "target": "input",
+      "start": 59.63333333333333,
+      "end": 63.733333333333334,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c2",
+      "text": "选出的片段接回前文，再预测下一个片段。",
+      "keyword": "片段",
+      "action": "track",
+      "target": "output",
+      "start": 63.733333333333334,
+      "end": 67.6,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c3",
+      "text": "示意里选了雨，但实际选择还取决于采样方式。",
+      "keyword": "示意",
+      "action": "track",
+      "target": "output",
+      "start": 67.6,
+      "end": 71.9,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s7-c1",
+      "text": "这种生成方式不能偷看尚未生成的后文。",
+      "keyword": "这种",
+      "action": "track",
+      "target": "input",
+      "start": 71.9,
+      "end": 75.56666666666666,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s7-c2",
+      "text": "注意力权重不是事实证明，流畅也可能出错。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "output",
+      "start": 75.56666666666666,
+      "end": 79.66666666666667,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s7-c3",
+      "text": "原版还有编码器和解码器，并非只有生成用途。",
+      "keyword": "原版",
+      "action": "track",
+      "target": "output",
+      "start": 79.66666666666667,
+      "end": 83.93333333333334,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s8-c1",
+      "text": "先把文字和位置变成数字，再交换上下文信息。",
+      "keyword": "上下文",
+      "action": "track",
+      "target": "input",
+      "start": 83.93333333333334,
+      "end": 88.23333333333333,
+      "sceneId": "s8"
+    },
+    {
+      "id": "s8-c2",
+      "text": "多层加工以后，输出才能利用前面的内容。",
+      "keyword": "多层",
+      "action": "track",
+      "target": "output",
+      "start": 88.23333333333333,
+      "end": 92.13333333333334,
+      "sceneId": "s8"
+    },
+    {
+      "id": "s8-c3",
+      "text": "记住：它学的是处理规律，不是自带真相。",
+      "keyword": "记住",
+      "action": "track",
+      "target": "output",
+      "start": 92.13333333333334,
+      "end": 96,
+      "sceneId": "s8"
+    }
+  ]
+}

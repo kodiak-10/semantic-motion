@@ -1,0 +1,5891 @@
+{
+  "mode": "flat2d",
+  "topic": "Transformer 入门：一句话怎样变成输出",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 96,
+  "series": "",
+  "style_profile": "tech-light",
+  "reviewOverlay": false,
+  "knowledgePlan": {
+    "input": {
+      "topic": "Transformer 入门：一句话怎样变成输出",
+      "audience_level": "普通大众",
+      "duration": 96,
+      "explanation_depth": "standard",
+      "aspect_ratio": "16:9",
+      "language": "zh-CN",
+      "audio_mode": "silent"
+    },
+    "learning_goal": "认识架构、文字表示、注意力加权、多层加工以及自回归生成的边界。",
+    "sources": [
+      {
+        "id": "paper",
+        "url": "https://arxiv.org/html/1706.03762v7",
+        "title": "Attention Is All You Need",
+        "accessed": "2026-10-14"
+      }
+    ],
+    "claims": [
+      {
+        "id": "s1",
+        "text": "Transformer 是一种神经网络架构。架构规定信息怎样处理，训练学出具体参数。用一句话看它工作：外面正在下什么？",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s2",
+        "text": "文字先被拆成片段，这些片段叫 token。每个片段变成一组数字，用来表示它的特征。还要加入位置信息，才能区分文字的顺序。",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s3",
+        "text": "注意力会为当前位置，计算不同来源的权重。模型把当前位置和其他可见位置做匹配。匹配结果变成权重，再决定各取多少信息。",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s4",
+        "text": "比如三份信息，各有一组数字作为内容。按六成、三成和一成混合，得到新的数字。这些数字只是教学示意，不是真实模型测量。",
+        "kind": "illustration",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s5",
+        "text": "多头注意力用多组计算，并行组合上下文。各路结果汇合后，还有前馈网络进一步加工。多层重复更新表示，也保留原信息帮助传递。",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s6",
+        "text": "以逐步生成文字的模型为例，它先给出概率。选出的片段接回前文，再预测下一个片段。示意里选了雨，但实际选择还取决于采样方式。",
+        "kind": "illustration",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s7",
+        "text": "这种生成方式不能偷看尚未生成的后文。注意力权重不是事实证明，流畅也可能出错。原版还有编码器和解码器，并非只有生成用途。",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      },
+      {
+        "id": "s8",
+        "text": "先把文字和位置变成数字，再交换上下文信息。多层加工以后，输出才能利用前面的内容。记住：它学的是处理规律，不是自带真相。",
+        "kind": "fact",
+        "source_ids": [
+          "paper"
+        ]
+      }
+    ],
+    "scenes": [
+      {
+        "id": "s1",
+        "dimension": "definition",
+        "title": "Transformer，怎样联系上下文？",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s1-c1",
+            "text": "Transformer 是一种神经网络架构。",
+            "keyword": "架构",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s1-c2",
+            "text": "架构规定信息怎样处理，训练学出具体参数。",
+            "keyword": "信息",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s1-c3",
+            "text": "用一句话看它工作：外面正在下什么？",
+            "keyword": "用一",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s1"
+        ],
+        "requires": [],
+        "teaches": [
+          "c1"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s2",
+        "dimension": "mechanism",
+        "title": "先把文字，变成可计算的信息",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s2-c1",
+            "text": "文字先被拆成片段，这些片段叫 token。",
+            "keyword": "片段",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s2-c2",
+            "text": "每个片段变成一组数字，用来表示它的特征。",
+            "keyword": "数字",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s2-c3",
+            "text": "还要加入位置信息，才能区分文字的顺序。",
+            "keyword": "信息",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s2"
+        ],
+        "requires": [
+          "c1"
+        ],
+        "teaches": [
+          "c2"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s3",
+        "dimension": "mechanism",
+        "title": "注意力：这一步该参考哪些信息？",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s3-c1",
+            "text": "注意力会为当前位置，计算不同来源的权重。",
+            "keyword": "注意力",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s3-c2",
+            "text": "模型把当前位置和其他可见位置做匹配。",
+            "keyword": "模型",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s3-c3",
+            "text": "匹配结果变成权重，再决定各取多少信息。",
+            "keyword": "信息",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s3"
+        ],
+        "requires": [
+          "c2"
+        ],
+        "teaches": [
+          "c3"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s4",
+        "dimension": "example",
+        "title": "按份量汇入，得到新的表示",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s4-c1",
+            "text": "比如三份信息，各有一组数字作为内容。",
+            "keyword": "数字",
+            "action": "merge",
+            "target": "input"
+          },
+          {
+            "id": "s4-c2",
+            "text": "按六成、三成和一成混合，得到新的数字。",
+            "keyword": "数字",
+            "action": "merge",
+            "target": "output"
+          },
+          {
+            "id": "s4-c3",
+            "text": "这些数字只是教学示意，不是真实模型测量。",
+            "keyword": "数字",
+            "action": "merge",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s4"
+        ],
+        "requires": [
+          "c3"
+        ],
+        "teaches": [
+          "c4"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s5",
+        "dimension": "mechanism",
+        "title": "并行看，再逐层加工",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s5-c1",
+            "text": "多头注意力用多组计算，并行组合上下文。",
+            "keyword": "注意力",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s5-c2",
+            "text": "各路结果汇合后，还有前馈网络进一步加工。",
+            "keyword": "各路",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s5-c3",
+            "text": "多层重复更新表示，也保留原信息帮助传递。",
+            "keyword": "信息",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s5"
+        ],
+        "requires": [
+          "c4"
+        ],
+        "teaches": [
+          "c5"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s6",
+        "dimension": "example",
+        "title": "生成时：给下一个片段分配概率",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s6-c1",
+            "text": "以逐步生成文字的模型为例，它先给出概率。",
+            "keyword": "概率",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s6-c2",
+            "text": "选出的片段接回前文，再预测下一个片段。",
+            "keyword": "片段",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s6-c3",
+            "text": "示意里选了雨，但实际选择还取决于采样方式。",
+            "keyword": "示意",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s6"
+        ],
+        "requires": [
+          "c5"
+        ],
+        "teaches": [
+          "c6"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s7",
+        "dimension": "limitations",
+        "title": "两个容易误会的地方",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s7-c1",
+            "text": "这种生成方式不能偷看尚未生成的后文。",
+            "keyword": "这种",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s7-c2",
+            "text": "注意力权重不是事实证明，流畅也可能出错。",
+            "keyword": "注意力",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s7-c3",
+            "text": "原版还有编码器和解码器，并非只有生成用途。",
+            "keyword": "原版",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s7"
+        ],
+        "requires": [
+          "c6"
+        ],
+        "teaches": [
+          "c7"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      },
+      {
+        "id": "s8",
+        "dimension": "takeaway",
+        "title": "联系上下文，逐层更新表示",
+        "relation": "process",
+        "entities": [
+          {
+            "id": "input",
+            "label": "前文信息",
+            "glyph": "document"
+          },
+          {
+            "id": "output",
+            "label": "更新表示",
+            "glyph": "document"
+          }
+        ],
+        "cues": [
+          {
+            "id": "s8-c1",
+            "text": "先把文字和位置变成数字，再交换上下文信息。",
+            "keyword": "上下文",
+            "action": "track",
+            "target": "input"
+          },
+          {
+            "id": "s8-c2",
+            "text": "多层加工以后，输出才能利用前面的内容。",
+            "keyword": "多层",
+            "action": "track",
+            "target": "output"
+          },
+          {
+            "id": "s8-c3",
+            "text": "记住：它学的是处理规律，不是自带真相。",
+            "keyword": "记住",
+            "action": "track",
+            "target": "output"
+          }
+        ],
+        "note": "切分与数值为教学示意；不是实际模型测量。",
+        "claim_ids": [
+          "s8"
+        ],
+        "requires": [
+          "c7"
+        ],
+        "teaches": [
+          "c8"
+        ],
+        "terms": [],
+        "visual_reason": "保留输入身份，通过份量变化、合流和输出反馈展示计算过程。",
+        "layout": "diagonal"
+      }
+    ],
+    "scope": {
+      "included": [
+        "definition",
+        "mechanism",
+        "example",
+        "limitations",
+        "takeaway"
+      ],
+      "omitted": [
+        {
+          "dimension": "motivation",
+          "reason": "聚焦基本计算流程，其他用途与历史不展开。"
+        },
+        {
+          "dimension": "comparison",
+          "reason": "聚焦基本计算流程，其他用途与历史不展开。"
+        },
+        {
+          "dimension": "use-cases",
+          "reason": "聚焦基本计算流程，其他用途与历史不展开。"
+        },
+        {
+          "dimension": "misconceptions",
+          "reason": "聚焦基本计算流程，其他用途与历史不展开。"
+        }
+      ]
+    },
+    "foundation": {
+      "concept": "Transformer",
+      "category": "神经网络架构",
+      "plain_definition": "Transformer 是一种神经网络架构。",
+      "definition_cue_id": "s1-c1"
+    },
+    "comprehension_check": {
+      "question": "为什么同一个词放进不同句子，处理结果可能不同？",
+      "answer": "注意力组合的上下文不同，逐层更新后的表示也可能不同。"
+    },
+    "review": {
+      "accuracy": 4,
+      "completeness": 4,
+      "clarity": 4,
+      "analogy_quality": 4,
+      "jargon_control": 4,
+      "visual_grounding": 4,
+      "notes": [
+        "计算结构核对原始论文；输入切分与注意力数值为教学示意，不冒充真实模型结果。",
+        "解释原版架构与自回归生成的区别；省略归一化细节和训练过程，不声称完整工程教程。",
+        "权重例子按实际加权算出；视觉质量需渲染检查，结构评分不代表审美。"
+      ]
+    }
+  },
+  "shots": [
+    {
+      "id": "s1",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "Transformer，怎样联系上下文？",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prompt",
+          "kind": "text",
+          "text": "下一个片段，你会选什么？",
+          "size": 42,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 548,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "rain",
+          "kind": "surface",
+          "width": 230,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 475,
+              "y": 647,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 0.9653333333333334,
+              "y": 625
+            },
+            {
+              "t": 5.43,
+              "scale": 1
+            },
+            {
+              "t": 8.446666666666665,
+              "scale": 1.1
+            },
+            {
+              "t": 10.618666666666666,
+              "scale": 1.1
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "rain-text",
+          "kind": "text",
+          "text": "雨",
+          "size": 44,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 115,
+              "y": 69
+            }
+          ],
+          "printedOn": "rain"
+        },
+        {
+          "id": "snow",
+          "kind": "surface",
+          "width": 230,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 815,
+              "y": 647,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 0.9653333333333334,
+              "y": 625
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "snow-text",
+          "kind": "text",
+          "text": "雪",
+          "size": 44,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 115,
+              "y": 69
+            }
+          ],
+          "printedOn": "snow"
+        },
+        {
+          "id": "noodle",
+          "kind": "surface",
+          "width": 230,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#536987",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1155,
+              "y": 647,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 0.9653333333333334,
+              "y": 625
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "noodle-text",
+          "kind": "text",
+          "text": "面条",
+          "size": 40,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 115,
+              "y": 69
+            }
+          ],
+          "printedOn": "noodle"
+        },
+        {
+          "id": "intro",
+          "kind": "text",
+          "text": "从上下文，找到更合理的延续",
+          "size": 30,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 839,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 11.342666666666666,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666666,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "rain",
+          "snow",
+          "noodle"
+        ]
+      },
+      "start": 0,
+      "end": 12.066666666666666,
+      "label": ""
+    },
+    {
+      "id": "s2",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "先把文字，变成可计算的信息",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "position-0",
+          "kind": "text",
+          "text": "位置 1",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 285,
+              "y": 491,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-0-0",
+          "kind": "rect",
+          "width": 20,
+          "height": 24,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 200,
+              "y": 646,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-0-1",
+          "kind": "rect",
+          "width": 20,
+          "height": 37,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 233,
+              "y": 633,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-0-2",
+          "kind": "rect",
+          "width": 20,
+          "height": 50,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 266,
+              "y": 620,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-0-3",
+          "kind": "rect",
+          "width": 20,
+          "height": 63,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 299,
+              "y": 607,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-0-4",
+          "kind": "rect",
+          "width": 20,
+          "height": 76,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 332,
+              "y": 594,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vector-label-0",
+          "kind": "text",
+          "text": "数字表示",
+          "size": 27,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 285,
+              "y": 741,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "position-1",
+          "kind": "text",
+          "text": "位置 2",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 590,
+              "y": 491,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-1-0",
+          "kind": "rect",
+          "width": 20,
+          "height": 43,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 505,
+              "y": 627,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-1-1",
+          "kind": "rect",
+          "width": 20,
+          "height": 56,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 538,
+              "y": 614,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-1-2",
+          "kind": "rect",
+          "width": 20,
+          "height": 69,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 571,
+              "y": 601,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-1-3",
+          "kind": "rect",
+          "width": 20,
+          "height": 82,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 604,
+              "y": 588,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-1-4",
+          "kind": "rect",
+          "width": 20,
+          "height": 35,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 637,
+              "y": 635,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vector-label-1",
+          "kind": "text",
+          "text": "数字表示",
+          "size": 27,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 590,
+              "y": 741,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "position-2",
+          "kind": "text",
+          "text": "位置 3",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 895,
+              "y": 491,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-2-0",
+          "kind": "rect",
+          "width": 20,
+          "height": 62,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 810,
+              "y": 608,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-2-1",
+          "kind": "rect",
+          "width": 20,
+          "height": 75,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 843,
+              "y": 595,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-2-2",
+          "kind": "rect",
+          "width": 20,
+          "height": 28,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 876,
+              "y": 642,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-2-3",
+          "kind": "rect",
+          "width": 20,
+          "height": 41,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 909,
+              "y": 629,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-2-4",
+          "kind": "rect",
+          "width": 20,
+          "height": 54,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 942,
+              "y": 616,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vector-label-2",
+          "kind": "text",
+          "text": "数字表示",
+          "size": 27,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 895,
+              "y": 741,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "position-3",
+          "kind": "text",
+          "text": "位置 4",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1200,
+              "y": 491,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-3-0",
+          "kind": "rect",
+          "width": 20,
+          "height": 81,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1115,
+              "y": 589,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-3-1",
+          "kind": "rect",
+          "width": 20,
+          "height": 34,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1148,
+              "y": 636,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-3-2",
+          "kind": "rect",
+          "width": 20,
+          "height": 47,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1181,
+              "y": 623,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-3-3",
+          "kind": "rect",
+          "width": 20,
+          "height": 60,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1214,
+              "y": 610,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "emb-3-4",
+          "kind": "rect",
+          "width": 20,
+          "height": 73,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1247,
+              "y": 597,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 1.2233333333333336,
+              "scale": 0.2
+            },
+            {
+              "t": 6.116666666666667,
+              "scale": 1
+            },
+            {
+              "t": 10.520666666666667,
+              "scale": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "vector-label-3",
+          "kind": "text",
+          "text": "数字表示",
+          "size": 27,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1200,
+              "y": 741,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "note",
+          "kind": "text",
+          "text": "切分方式因模型而异 · 图中是示意",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 860,
+              "opacity": 0
+            },
+            {
+              "t": 0.6728333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 11.499333333333334,
+              "opacity": 1
+            },
+            {
+              "t": 12.233333333333334,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "emb-0-0",
+          "emb-0-1",
+          "emb-0-2",
+          "emb-0-3"
+        ]
+      },
+      "start": 12.066666666666666,
+      "end": 24.3,
+      "label": ""
+    },
+    {
+      "id": "s3",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "注意力：这一步该参考哪些信息？",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "source-0",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 325,
+              "y": 572,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "weight-0",
+          "kind": "rect",
+          "width": 468,
+          "height": 30,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 495,
+              "y": 540,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 1.7449999999999994,
+              "scale": 0.04
+            },
+            {
+              "t": 8.14333333333333,
+              "scale": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "number-0",
+          "kind": "text",
+          "text": "60%",
+          "size": 32,
+          "color": "#2463eb",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1410,
+              "y": 572,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "source-1",
+          "kind": "text",
+          "text": "外面",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 325,
+              "y": 687,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "weight-1",
+          "kind": "rect",
+          "width": 234,
+          "height": 30,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 495,
+              "y": 655,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 1.7449999999999994,
+              "scale": 0.04
+            },
+            {
+              "t": 8.14333333333333,
+              "scale": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "number-1",
+          "kind": "text",
+          "text": "30%",
+          "size": 32,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1410,
+              "y": 687,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "source-2",
+          "kind": "text",
+          "text": "下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 325,
+              "y": 802,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "weight-2",
+          "kind": "rect",
+          "width": 78,
+          "height": 30,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 495,
+              "y": 770,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 1.7449999999999994,
+              "scale": 0.04
+            },
+            {
+              "t": 8.14333333333333,
+              "scale": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "number-2",
+          "kind": "text",
+          "text": "10%",
+          "size": 32,
+          "color": "#087d9a",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1410,
+              "y": 802,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "note",
+          "kind": "text",
+          "text": "权重合计 100% · 示例数字不代表真实模型",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 885,
+              "opacity": 0
+            },
+            {
+              "t": 0.6398333333333331,
+              "opacity": 1
+            },
+            {
+              "t": 10.935333333333329,
+              "opacity": 1
+            },
+            {
+              "t": 11.63333333333333,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "weight-0",
+          "weight-1",
+          "weight-2"
+        ]
+      },
+      "start": 24.3,
+      "end": 35.93333333333333,
+      "label": ""
+    },
+    {
+      "id": "s4",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "按份量汇入，得到新的表示",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-0",
+          "kind": "surface",
+          "width": 220,
+          "height": 100,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 310,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 0.9333333333333337,
+              "y": 525
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-0-text",
+          "kind": "text",
+          "text": "[1, 0]",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 110,
+              "y": 64
+            }
+          ],
+          "printedOn": "value-0"
+        },
+        {
+          "id": "weight-0",
+          "kind": "text",
+          "text": "雨伞 · 60%",
+          "size": 28,
+          "color": "#2463eb",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 420,
+              "y": 498,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "mix-0",
+          "kind": "path",
+          "path": "M420 650C420 695 960 680 960 710",
+          "bounds": [
+            417,
+            647,
+            963,
+            713
+          ],
+          "color": "#2463eb",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 7.000000000000003,
+              "v": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-1",
+          "kind": "surface",
+          "width": 220,
+          "height": 100,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 710,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 0.9333333333333337,
+              "y": 525
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-1-text",
+          "kind": "text",
+          "text": "[0, 1]",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 110,
+              "y": 64
+            }
+          ],
+          "printedOn": "value-1"
+        },
+        {
+          "id": "weight-1",
+          "kind": "text",
+          "text": "外面 · 30%",
+          "size": 28,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 820,
+              "y": 498,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "mix-1",
+          "kind": "path",
+          "path": "M820 650C820 695 960 680 960 710",
+          "bounds": [
+            817,
+            647,
+            963,
+            713
+          ],
+          "color": "#1647b8",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 7.000000000000003,
+              "v": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-2",
+          "kind": "surface",
+          "width": 220,
+          "height": 100,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1110,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 0.9333333333333337,
+              "y": 525
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "value-2-text",
+          "kind": "text",
+          "text": "[0.5, 0.5]",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 110,
+              "y": 64
+            }
+          ],
+          "printedOn": "value-2"
+        },
+        {
+          "id": "weight-2",
+          "kind": "text",
+          "text": "下 · 10%",
+          "size": 28,
+          "color": "#087d9a",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 498,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "mix-2",
+          "kind": "path",
+          "path": "M1220 650C1220 695 960 680 960 710",
+          "bounds": [
+            957,
+            647,
+            1223,
+            713
+          ],
+          "color": "#087d9a",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 7.000000000000003,
+              "v": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "result",
+          "kind": "surface",
+          "width": 400,
+          "height": 105,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 760,
+              "y": 767,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 0.9333333333333337,
+              "y": 745
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "result-text",
+          "kind": "text",
+          "text": "[0.65, 0.35]",
+          "size": 36,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 200,
+              "y": 66.5
+            }
+          ],
+          "printedOn": "result"
+        },
+        {
+          "id": "result-tag",
+          "kind": "text",
+          "text": "更新后的表示",
+          "size": 30,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1410,
+              "y": 809,
+              "opacity": 0
+            },
+            {
+              "t": 0.6416666666666669,
+              "opacity": 1
+            },
+            {
+              "t": 10.96666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.666666666666671,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "pair": [
+            "mix-0",
+            "mix-1"
+          ],
+          "start": 0,
+          "end": 11.666666666666671,
+          "reason": "三路信息流在结果入口有意汇合。"
+        },
+        {
+          "pair": [
+            "mix-0",
+            "mix-2"
+          ],
+          "start": 0,
+          "end": 11.666666666666671,
+          "reason": "三路信息流在结果入口有意汇合。"
+        },
+        {
+          "pair": [
+            "mix-1",
+            "mix-2"
+          ],
+          "start": 0,
+          "end": 11.666666666666671,
+          "reason": "三路信息流在结果入口有意汇合。"
+        }
+      ],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "value-0",
+          "mix-0",
+          "value-1",
+          "mix-1"
+        ]
+      },
+      "start": 35.93333333333333,
+      "end": 47.6,
+      "label": ""
+    },
+    {
+      "id": "s5",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "并行看，再逐层加工",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-0",
+          "kind": "surface",
+          "width": 260,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 240,
+              "y": 512,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 490
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-0-text",
+          "kind": "text",
+          "text": "计算通道 1",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 58
+            }
+          ],
+          "printedOn": "head-0"
+        },
+        {
+          "id": "route-0",
+          "kind": "path",
+          "path": "M530 535C650 535 660 660 770 660",
+          "bounds": [
+            527,
+            532,
+            773,
+            663
+          ],
+          "color": "#2463eb",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 4.211666666666666,
+              "v": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-1",
+          "kind": "surface",
+          "width": 260,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 240,
+              "y": 637,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 615
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-1-text",
+          "kind": "text",
+          "text": "计算通道 2",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 58
+            }
+          ],
+          "printedOn": "head-1"
+        },
+        {
+          "id": "route-1",
+          "kind": "path",
+          "path": "M530 660C650 660 660 660 770 660",
+          "bounds": [
+            527,
+            657,
+            773,
+            663
+          ],
+          "color": "#1647b8",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 4.211666666666666,
+              "v": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-2",
+          "kind": "surface",
+          "width": 260,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 240,
+              "y": 762,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 740
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "head-2-text",
+          "kind": "text",
+          "text": "计算通道 3",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 58
+            }
+          ],
+          "printedOn": "head-2"
+        },
+        {
+          "id": "route-2",
+          "kind": "path",
+          "path": "M530 785C650 785 660 660 770 660",
+          "bounds": [
+            527,
+            657,
+            773,
+            788
+          ],
+          "color": "#087d9a",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 4.211666666666666,
+              "v": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "combine",
+          "kind": "surface",
+          "width": 210,
+          "height": 90,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 810,
+              "y": 637,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 615
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "combine-text",
+          "kind": "text",
+          "text": "汇合",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 105,
+              "y": 59
+            }
+          ],
+          "printedOn": "combine"
+        },
+        {
+          "id": "next",
+          "kind": "path",
+          "path": "M1050 660H1155",
+          "bounds": [
+            1047,
+            657,
+            1158,
+            663
+          ],
+          "color": "#1647b8",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 7.821666666666665,
+              "v": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "ffn",
+          "kind": "surface",
+          "width": 350,
+          "height": 90,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1200,
+              "y": 637,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 615
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "ffn-text",
+          "kind": "text",
+          "text": "前馈网络",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 175,
+              "y": 59
+            }
+          ],
+          "printedOn": "ffn"
+        },
+        {
+          "id": "loop",
+          "kind": "text",
+          "text": "这样的处理，会逐层重复",
+          "size": 30,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1130,
+              "y": 823,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [
+        {
+          "pair": [
+            "route-0",
+            "route-1"
+          ],
+          "start": 0,
+          "end": 12.033333333333331,
+          "reason": "并行通道汇入共同处理入口。"
+        },
+        {
+          "pair": [
+            "route-0",
+            "route-2"
+          ],
+          "start": 0,
+          "end": 12.033333333333331,
+          "reason": "并行通道汇入共同处理入口。"
+        },
+        {
+          "pair": [
+            "route-1",
+            "route-2"
+          ],
+          "start": 0,
+          "end": 12.033333333333331,
+          "reason": "并行通道汇入共同处理入口。"
+        }
+      ],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "head-0",
+          "route-0",
+          "head-1",
+          "route-1"
+        ]
+      },
+      "start": 47.6,
+      "end": 59.63333333333333,
+      "label": ""
+    },
+    {
+      "id": "s6",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            },
+            {
+              "t": 5.765333333333336,
+              "opacity": 1
+            },
+            {
+              "t": 6.37866666666667,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "？",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "生成时：给下一个片段分配概率",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "choice-0",
+          "kind": "text",
+          "text": "雨",
+          "size": 34,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 300,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-0",
+          "kind": "rect",
+          "width": 468,
+          "height": 36,
+          "color": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 430,
+              "y": 510,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "scale": 0.05
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 5.520000000000003,
+              "scale": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-label-0",
+          "kind": "text",
+          "text": "72%",
+          "size": 28,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1040,
+              "y": 546,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "choice-1",
+          "kind": "text",
+          "text": "雪",
+          "size": 34,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 300,
+              "y": 662,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-1",
+          "kind": "rect",
+          "width": 117,
+          "height": 36,
+          "color": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 430,
+              "y": 625,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "scale": 0.05
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 5.520000000000003,
+              "scale": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-label-1",
+          "kind": "text",
+          "text": "18%",
+          "size": 28,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1040,
+              "y": 661,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "choice-2",
+          "kind": "text",
+          "text": "冰雹",
+          "size": 34,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 300,
+              "y": 777,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-2",
+          "kind": "rect",
+          "width": 65,
+          "height": 36,
+          "color": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 430,
+              "y": 740,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "scale": 0.05
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 5.520000000000003,
+              "scale": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "prob-label-2",
+          "kind": "text",
+          "text": "10%",
+          "size": 28,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1040,
+              "y": 776,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "selected",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1250,
+              "y": 583,
+              "scale": 1.4,
+              "opacity": 0
+            },
+            {
+              "t": 3.9253333333333353,
+              "opacity": 0
+            },
+            {
+              "t": 4.7840000000000025,
+              "opacity": 1
+            },
+            {
+              "t": 5.765333333333336,
+              "x": 1250,
+              "y": 583,
+              "scale": 1.4
+            },
+            {
+              "t": 9.077333333333337,
+              "x": 1220,
+              "y": 325,
+              "scale": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "x": 1220,
+              "y": 325,
+              "scale": 1
+            }
+          ]
+        },
+        {
+          "id": "selected-text",
+          "kind": "text",
+          "text": "雨",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "selected"
+        },
+        {
+          "id": "selected-label",
+          "kind": "text",
+          "text": "选中后，接回前文",
+          "size": 27,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1370,
+              "y": 795,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "note",
+          "kind": "text",
+          "text": "候选与概率均为教学示意",
+          "size": 24,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 745,
+              "y": 887,
+              "opacity": 0
+            },
+            {
+              "t": 0.674666666666667,
+              "opacity": 1
+            },
+            {
+              "t": 11.530666666666672,
+              "opacity": 1
+            },
+            {
+              "t": 12.266666666666673,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "prob-0",
+          "prob-1",
+          "prob-2",
+          "selected"
+        ]
+      },
+      "start": 59.63333333333333,
+      "end": 71.9,
+      "label": ""
+    },
+    {
+      "id": "s7",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "雨",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "两个容易误会的地方",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "known",
+          "kind": "surface",
+          "width": 420,
+          "height": 120,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 240,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 525
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "known-text",
+          "kind": "text",
+          "text": "已经出现的前文",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 210,
+              "y": 74
+            }
+          ],
+          "printedOn": "known"
+        },
+        {
+          "id": "future",
+          "kind": "surface",
+          "width": 440,
+          "height": 120,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#536987",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1150,
+              "y": 547,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 0.9626666666666666,
+              "y": 525
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "future-text",
+          "kind": "text",
+          "text": "尚未生成的后文",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 220,
+              "y": 74
+            }
+          ],
+          "printedOn": "future"
+        },
+        {
+          "id": "stop",
+          "kind": "text",
+          "text": "不可偷看",
+          "size": 38,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 920,
+              "y": 600,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "warning",
+          "kind": "text",
+          "text": "流畅 ≠ 事实正确",
+          "size": 52,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 767,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "kind": "text",
+          "text": "本片用生成过程举例；原版 Transformer 还包含编码器",
+          "size": 25,
+          "color": "#536987",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 873,
+              "opacity": 0
+            },
+            {
+              "t": 0.6618333333333333,
+              "opacity": 1
+            },
+            {
+              "t": 11.31133333333333,
+              "opacity": 1
+            },
+            {
+              "t": 12.033333333333331,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "known",
+          "future"
+        ]
+      },
+      "start": 71.9,
+      "end": 83.93333333333334,
+      "label": ""
+    },
+    {
+      "id": "s8",
+      "nodes": [
+        {
+          "id": "token-0",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 230,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-0-text",
+          "kind": "text",
+          "text": "小明",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-0"
+        },
+        {
+          "id": "token-1",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 440,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-1-text",
+          "kind": "text",
+          "text": "拿起",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-1"
+        },
+        {
+          "id": "token-2",
+          "kind": "surface",
+          "width": 180,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 650,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-2-text",
+          "kind": "text",
+          "text": "雨伞",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 90,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-2"
+        },
+        {
+          "id": "token-3",
+          "kind": "surface",
+          "width": 330,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 860,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-3-text",
+          "kind": "text",
+          "text": "因为外面正在下",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 165,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-3"
+        },
+        {
+          "id": "token-4",
+          "kind": "surface",
+          "width": 140,
+          "height": 88,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1220,
+              "y": 325
+            }
+          ]
+        },
+        {
+          "id": "token-4-text",
+          "kind": "text",
+          "text": "雨",
+          "size": 30,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 70,
+              "y": 58
+            }
+          ],
+          "printedOn": "token-4"
+        },
+        {
+          "id": "title",
+          "kind": "text",
+          "text": "联系上下文，逐层更新表示",
+          "size": 48,
+          "color": "#152b4d",
+          "align": "start",
+          "keys": [
+            {
+              "t": 0,
+              "x": 130,
+              "y": 239,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-0",
+          "kind": "surface",
+          "width": 310,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 170,
+              "y": 587,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 0.965333333333333,
+              "y": 565
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-0-text",
+          "kind": "text",
+          "text": "文字与位置",
+          "size": 32,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 155,
+              "y": 69
+            }
+          ],
+          "printedOn": "step-0"
+        },
+        {
+          "id": "flow-0",
+          "kind": "path",
+          "path": "M505 620H555",
+          "bounds": [
+            502,
+            617,
+            558,
+            623
+          ],
+          "color": "#2463eb",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 4.826666666666665,
+              "v": 1
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-1",
+          "kind": "surface",
+          "width": 310,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#1647b8",
+          "keys": [
+            {
+              "t": 0,
+              "x": 580,
+              "y": 587,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 0.965333333333333,
+              "y": 565
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-1-text",
+          "kind": "text",
+          "text": "上下文交换",
+          "size": 32,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 155,
+              "y": 69
+            }
+          ],
+          "printedOn": "step-1"
+        },
+        {
+          "id": "flow-1",
+          "kind": "path",
+          "path": "M915 620H965",
+          "bounds": [
+            912,
+            617,
+            968,
+            623
+          ],
+          "color": "#1647b8",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 6.636666666666665,
+              "v": 1
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-2",
+          "kind": "surface",
+          "width": 310,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#087d9a",
+          "keys": [
+            {
+              "t": 0,
+              "x": 990,
+              "y": 587,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 0.965333333333333,
+              "y": 565
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-2-text",
+          "kind": "text",
+          "text": "逐层加工",
+          "size": 32,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 155,
+              "y": 69
+            }
+          ],
+          "printedOn": "step-2"
+        },
+        {
+          "id": "flow-2",
+          "kind": "path",
+          "path": "M1325 620H1375",
+          "bounds": [
+            1322,
+            617,
+            1378,
+            623
+          ],
+          "color": "#087d9a",
+          "strokeWidth": 3,
+          "keys": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "v": 1,
+              "opacity": 0
+            },
+            {
+              "t": 0,
+              "v": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 8.446666666666664,
+              "v": 1
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-3",
+          "kind": "surface",
+          "width": 310,
+          "height": 110,
+          "radius": 16,
+          "color": "#eff5ff",
+          "fill": "#2463eb",
+          "keys": [
+            {
+              "t": 0,
+              "x": 1400,
+              "y": 587,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 0.965333333333333,
+              "y": 565
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        },
+        {
+          "id": "step-3-text",
+          "kind": "text",
+          "text": "得到输出",
+          "size": 32,
+          "color": "#152b4d",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 155,
+              "y": 69
+            }
+          ],
+          "printedOn": "step-3"
+        },
+        {
+          "id": "end",
+          "kind": "text",
+          "text": "核心：让每个位置，带上上下文的信息",
+          "size": 38,
+          "color": "#1647b8",
+          "align": "middle",
+          "keys": [
+            {
+              "t": 0,
+              "x": 960,
+              "y": 829,
+              "opacity": 0
+            },
+            {
+              "t": 0.6636666666666665,
+              "opacity": 1
+            },
+            {
+              "t": 11.342666666666663,
+              "opacity": 1
+            },
+            {
+              "t": 12.066666666666663,
+              "opacity": 0
+            }
+          ]
+        }
+      ],
+      "contacts": [],
+      "visualEvidence": {
+        "trigger": "处理当前输入",
+        "change": "信息被表示、分配份量、汇合或形成候选输出",
+        "result": "观众看到当前步骤怎样更新信息",
+        "nodes": [
+          "step-0",
+          "flow-0",
+          "step-1",
+          "flow-1"
+        ]
+      },
+      "start": 83.93333333333334,
+      "end": 96,
+      "label": ""
+    }
+  ],
+  "captions": [
+    {
+      "id": "s1-c1",
+      "text": "Transformer 是一种神经网络架构。",
+      "keyword": "架构",
+      "action": "track",
+      "target": "input",
+      "start": 0,
+      "end": 4.5,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c2",
+      "text": "架构规定信息怎样处理，训练学出具体参数。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 4.5,
+      "end": 8.566666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s1-c3",
+      "text": "用一句话看它工作：外面正在下什么？",
+      "keyword": "用一",
+      "action": "track",
+      "target": "output",
+      "start": 8.566666666666666,
+      "end": 12.066666666666666,
+      "sceneId": "s1"
+    },
+    {
+      "id": "s2-c1",
+      "text": "文字先被拆成片段，这些片段叫 token。",
+      "keyword": "片段",
+      "action": "track",
+      "target": "input",
+      "start": 12.066666666666666,
+      "end": 16.333333333333332,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c2",
+      "text": "每个片段变成一组数字，用来表示它的特征。",
+      "keyword": "数字",
+      "action": "track",
+      "target": "output",
+      "start": 16.333333333333332,
+      "end": 20.433333333333334,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s2-c3",
+      "text": "还要加入位置信息，才能区分文字的顺序。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 20.433333333333334,
+      "end": 24.3,
+      "sceneId": "s2"
+    },
+    {
+      "id": "s3-c1",
+      "text": "注意力会为当前位置，计算不同来源的权重。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "input",
+      "start": 24.3,
+      "end": 28.4,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c2",
+      "text": "模型把当前位置和其他可见位置做匹配。",
+      "keyword": "模型",
+      "action": "track",
+      "target": "output",
+      "start": 28.4,
+      "end": 32.06666666666667,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s3-c3",
+      "text": "匹配结果变成权重，再决定各取多少信息。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 32.06666666666667,
+      "end": 35.93333333333333,
+      "sceneId": "s3"
+    },
+    {
+      "id": "s4-c1",
+      "text": "比如三份信息，各有一组数字作为内容。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "input",
+      "start": 35.93333333333333,
+      "end": 39.63333333333333,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c2",
+      "text": "按六成、三成和一成混合，得到新的数字。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "output",
+      "start": 39.63333333333333,
+      "end": 43.5,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s4-c3",
+      "text": "这些数字只是教学示意，不是真实模型测量。",
+      "keyword": "数字",
+      "action": "merge",
+      "target": "output",
+      "start": 43.5,
+      "end": 47.6,
+      "sceneId": "s4"
+    },
+    {
+      "id": "s5-c1",
+      "text": "多头注意力用多组计算，并行组合上下文。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "input",
+      "start": 47.6,
+      "end": 51.46666666666667,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c2",
+      "text": "各路结果汇合后，还有前馈网络进一步加工。",
+      "keyword": "各路",
+      "action": "track",
+      "target": "output",
+      "start": 51.46666666666667,
+      "end": 55.56666666666667,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s5-c3",
+      "text": "多层重复更新表示，也保留原信息帮助传递。",
+      "keyword": "信息",
+      "action": "track",
+      "target": "output",
+      "start": 55.56666666666667,
+      "end": 59.63333333333333,
+      "sceneId": "s5"
+    },
+    {
+      "id": "s6-c1",
+      "text": "以逐步生成文字的模型为例，它先给出概率。",
+      "keyword": "概率",
+      "action": "track",
+      "target": "input",
+      "start": 59.63333333333333,
+      "end": 63.733333333333334,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c2",
+      "text": "选出的片段接回前文，再预测下一个片段。",
+      "keyword": "片段",
+      "action": "track",
+      "target": "output",
+      "start": 63.733333333333334,
+      "end": 67.6,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s6-c3",
+      "text": "示意里选了雨，但实际选择还取决于采样方式。",
+      "keyword": "示意",
+      "action": "track",
+      "target": "output",
+      "start": 67.6,
+      "end": 71.9,
+      "sceneId": "s6"
+    },
+    {
+      "id": "s7-c1",
+      "text": "这种生成方式不能偷看尚未生成的后文。",
+      "keyword": "这种",
+      "action": "track",
+      "target": "input",
+      "start": 71.9,
+      "end": 75.56666666666666,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s7-c2",
+      "text": "注意力权重不是事实证明，流畅也可能出错。",
+      "keyword": "注意力",
+      "action": "track",
+      "target": "output",
+      "start": 75.56666666666666,
+      "end": 79.66666666666667,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s7-c3",
+      "text": "原版还有编码器和解码器，并非只有生成用途。",
+      "keyword": "原版",
+      "action": "track",
+      "target": "output",
+      "start": 79.66666666666667,
+      "end": 83.93333333333334,
+      "sceneId": "s7"
+    },
+    {
+      "id": "s8-c1",
+      "text": "先把文字和位置变成数字，再交换上下文信息。",
+      "keyword": "上下文",
+      "action": "track",
+      "target": "input",
+      "start": 83.93333333333334,
+      "end": 88.23333333333333,
+      "sceneId": "s8"
+    },
+    {
+      "id": "s8-c2",
+      "text": "多层加工以后，输出才能利用前面的内容。",
+      "keyword": "多层",
+      "action": "track",
+      "target": "output",
+      "start": 88.23333333333333,
+      "end": 92.13333333333334,
+      "sceneId": "s8"
+    },
+    {
+      "id": "s8-c3",
+      "text": "记住：它学的是处理规律，不是自带真相。",
+      "keyword": "记住",
+      "action": "track",
+      "target": "output",
+      "start": 92.13333333333334,
+      "end": 96,
+      "sceneId": "s8"
+    }
+  ]
+}

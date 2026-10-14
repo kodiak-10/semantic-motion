@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "definition": "Transformer 是一种神经网络架构。",
+  "scenes": 8,
+  "scope": "Checks source references, prerequisites, glossary, required dimensions, timing and exact script binding; not a factual or aesthetic certification"
+}
