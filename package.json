@@ -1,6 +1,6 @@
 {
   "name": "semantic-motion",
-  "version": "0.12.0-alpha.2",
+  "version": "0.12.0-alpha.6",
   "private": true,
   "description": "Source-grounded Chinese explainer animation skill and 2D renderer (alpha)",
   "license": "MIT",
@@ -18,7 +18,11 @@
     "demo": "npm run demo:sky",
     "preview": "npm run build:sky && node scripts/flat/render.mjs examples/flat/general-sky/generated/film.json out/preview.png 1100",
     "preview:3d": "node scripts/flat/render.mjs examples/spatial/film.json out/spatial.png 180 --study",
-    "demo:3d": "node scripts/flat/render.mjs examples/spatial/film.json out/spatial.mp4 --study"
+    "demo:3d": "node scripts/flat/render.mjs examples/spatial/film.json out/spatial.mp4 --study",
+    "build:moon": "node scripts/flat/compile.mjs examples/flat/general-moon/knowledge-plan.json examples/flat/general-moon/staging.json examples/flat/general-moon/generated",
+    "demo:moon": "npm run build:moon && node scripts/flat/render.mjs examples/flat/general-moon/generated/film.json out/moon.mp4",
+    "build:transformer": "node scripts/flat/compile.mjs examples/flat/general-transformer/knowledge-plan.json examples/flat/general-transformer/staging.json examples/flat/general-transformer/generated",
+    "demo:transformer": "npm run build:transformer && node scripts/flat/render.mjs examples/flat/general-transformer/generated/film.json out/transformer.mp4"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.533",
