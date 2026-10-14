@@ -1,0 +1,21 @@
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
+import {validateFlatContent} from './content-gate.mjs';
+import {probeMedia} from '../media-probe.mjs';import {validateFlat} from './validate.mjs';
+const [input,voiceDir,output]=process.argv.slice(2);if(!output)throw Error('Expected source film, voice directory, output directory');
+const source=JSON.parse(fs.readFileSync(input));validateFlat(source);validateFlatContent(source);if(source.timeMap)throw Error('Use the original authored film, not an already retimed film');
+const captions=JSON.parse(fs.readFileSync(path.join(voiceDir,'aligned-captions.json'))),audioFile=path.join(voiceDir,'narration.mp3');
+if(captions.length!==source.captions.length||captions.some((c,i)=>c.text!==source.captions[i].text))throw Error('Aligned captions do not match original film');
+let previous=0;for(const c of captions){if(!Number.isFinite(c.start)||!Number.isFinite(c.end)||c.start<previous||c.end<=c.start)throw Error('Invalid real speech timestamps');previous=c.end;}
+const probe=probeMedia(audioFile);const audioDuration=Number(probe.format.duration);if(!Number.isFinite(audioDuration)||audioDuration<previous)throw Error('Audio ends before speech timestamps');
+const duration=Math.ceil(audioDuration*source.fps)/source.fps;
+const timeMap=[{source:0,target:0},...source.captions.slice(1).map((c,i)=>({source:c.start,target:captions[i+1].start})),{source:source.duration,target:duration}];
+const hash=crypto.createHash('sha256').update(fs.readFileSync(audioFile)).digest('hex');const audio=`audio/free-${hash.slice(0,20)}.mp3`;
+fs.mkdirSync('public/audio',{recursive:true});fs.copyFileSync(audioFile,path.join('public',audio));
+const film={...source,sourceDuration:source.duration,duration,timeMap,captions,audio,reviewOverlay:false};validateFlat(film);validateFlatContent(film);
+fs.mkdirSync(output,{recursive:true});const write=(name,data)=>fs.writeFileSync(path.join(output,name),JSON.stringify(data,null,2)+'\n');
+write('film.json',film);const {audio:_,...silent}=film;write('silent-film.json',silent);write('narration.json',captions);fs.writeFileSync(path.join(output,'narration.md'),captions.map(c=>c.text).join('\n\n')+'\n');
+const stamp=t=>{const ms=Math.round(t*1000);return `${String(Math.floor(ms/3600000)).padStart(2,'0')}:${String(Math.floor(ms/60000)%60).padStart(2,'0')}:${String(Math.floor(ms/1000)%60).padStart(2,'0')},${String(ms%1000).padStart(3,'0')}`;};
+fs.writeFileSync(path.join(output,'subtitle.srt'),captions.map((c,i)=>`${i+1}\n${stamp(c.start)} --> ${stamp(c.end)}\n${c.text}\n`).join('\n'));
+write('timing.json',{duration,audio_duration:audioDuration,audio_aligned:true,basis:'Service word boundaries; authored animation mapped between phrase-start anchors',timeMap,captions});
+write('voice-provenance.json',{...JSON.parse(fs.readFileSync(path.join(voiceDir,'voice-provenance.json'))),audio_sha256:hash,audio_duration:audioDuration});
+console.log(JSON.stringify({duration,audioDuration,audio,output}));

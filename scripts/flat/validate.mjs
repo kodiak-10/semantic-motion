@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-const assets=new Set(['parcel-cutaway','market','milk','bread','apple','bag-back','bag-front','coin','wallet','receipt','house','bus','clock','price-tag','paper-desk','parcel','envelope','decision-dial','probability-column','review-lens','document-scroll','route-switch','inbox','inbox-front']);
+const assets=new Set(['light-source','rocky-sphere','ocean-sphere','parcel-cutaway','market','milk','bread','apple','bag-back','bag-front','coin','wallet','receipt','house','bus','clock','price-tag','paper-desk','parcel','envelope','decision-dial','probability-column','review-lens','document-scroll','route-switch','inbox','inbox-front']);
 export function validateFlat(f){
- if(!['studio','ink'].includes(f.style_profile))throw Error('This release supports studio or ink style');
+ if(!['studio','ink','midnight','tech','tech-light'].includes(f.style_profile))throw Error('Unsupported style profile');
  if(f.mode!=='flat2d'||f.width!==1920||f.height!==1080||![30,60].includes(f.fps)||!Number.isFinite(f.duration)||f.duration<=0)throw Error('Expected 16:9 1080p flat2d plan');
  if(f.timeMap){
   if(!Number.isFinite(f.sourceDuration)||f.sourceDuration<=0||f.timeMap.length<2)throw Error('Audio timeline needs authored duration and anchors');
@@ -10,6 +10,10 @@ export function validateFlat(f){
   for(const a of f.timeMap){if(!Number.isFinite(a.source)||!Number.isFinite(a.target)||a.source<=source||a.target<=target)throw Error('Audio timeline must increase strictly');source=a.source;target=a.target;}
   if(f.timeMap[0].source!==0||f.timeMap[0].target!==0||source!==f.sourceDuration||Math.abs(target-f.duration)>1e-8)throw Error('Audio timeline endpoints must match film');
  }else if(f.sourceDuration!==undefined)throw Error('Source duration requires an audio timeline');
+ if(f.audio){
+  const root=path.resolve('public'),file=path.resolve(root,f.audio);
+  if(!file.startsWith(root+path.sep)||!['.mp3','.wav','.m4a'].includes(path.extname(file).toLowerCase())||!fs.existsSync(file))throw Error('Audio requires an existing local public file');
+ }
  let end=0,nodes=0;
  for(const s of f.shots){
   if(s.start!==end||s.end<=s.start)throw Error('Shots must cover the timeline without gaps or overlaps');end=s.end;

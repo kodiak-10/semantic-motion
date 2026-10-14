@@ -1,7 +1,7 @@
 // Conservative local illustration bounds, including strokes. Background scenery is
 // not a foreground obstacle; receipt/tag interiors are intentional text surfaces.
 export function assetBounds(name,v=1){
- const fixed={'parcel-cutaway':[-282,-365,282,126],parcel:[-177,-130,177,143],envelope:[-170,-107,170,107],'decision-dial':[-170,-170,170,170],'probability-column':[-70,-313,87,4],'review-lens':[-110,-110,181,181],'document-scroll':[-146,-183,153,195],'route-switch':[-170,-70,170,70],inbox:[-170,-97,170,102],'inbox-front':[-170,-5,170,102],milk:[-71,-241,79,5],bread:[-135,-229,108,5],apple:[-118,-181,122,33],'bag-back':[-211,-311,211,38],'bag-front':[-211,-182,211,58],coin:[-50,-50,50,50],house:[-120,-240,120,5],bus:[-150,-155,150,8],clock:[-95,-95,95,95],'price-tag':[-125,-91,125,73]};
+ const fixed={'light-source':[-150,-150,150,150],'rocky-sphere':[-202,-202,202,202],'ocean-sphere':[-202,-202,202,202],'parcel-cutaway':[-282,-365,282,126],parcel:[-177,-130,177,143],envelope:[-170,-107,170,107],'decision-dial':[-170,-170,170,170],'probability-column':[-70,-313,87,4],'review-lens':[-110,-110,181,181],'document-scroll':[-146,-183,153,195],'route-switch':[-170,-70,170,70],inbox:[-170,-97,170,102],'inbox-front':[-170,-5,170,102],milk:[-71,-241,79,5],bread:[-135,-229,108,5],apple:[-118,-181,122,33],'bag-back':[-211,-311,211,38],'bag-front':[-211,-182,211,58],coin:[-50,-50,50,50],house:[-120,-240,120,5],bus:[-150,-155,150,8],clock:[-95,-95,95,95],'price-tag':[-125,-91,125,73]};
  if(name==='market'||name==='paper-desk')return null;
  if(name==='receipt')return [-173,-325,173,-310+Math.max(0,v)*420+5];
  if(name==='wallet'){

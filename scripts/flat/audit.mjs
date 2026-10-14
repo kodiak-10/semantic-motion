@@ -18,7 +18,7 @@ for(let frame=0;frame<f.duration*f.fps;frame++){
   const r=p.rotation*Math.PI/180;const corners=[[m.x+offset,m.y],[m.x+offset+m.width,m.y],[m.x+offset,m.y+m.height],[m.x+offset+m.width,m.y+m.height]].map(([x,y])=>({x:p.x+p.scale*(x*Math.cos(r)-y*Math.sin(r)),y:p.y+p.scale*(x*Math.sin(r)+y*Math.cos(r))}));
   const b={id:n.id,x:Math.min(...corners.map(c=>c.x)),y:Math.min(...corners.map(c=>c.y)),right:Math.max(...corners.map(c=>c.x)),bottom:Math.max(...corners.map(c=>c.y))};checked++;if(b.x<64||b.right>1856||b.y<165||b.bottom>905)failures.push({frame,type:'text-safe-area',...b});boxes.push(b);
  }
- for(const n of s.nodes.filter(n=>['image','asset','rect','surface','path','dots'].includes(n.kind))){
+ for(const n of s.nodes.filter(n=>['solid','image','asset','rect','surface','path','dots'].includes(n.kind))){
   const p=sampleNodePose(n,s.nodes,t-s.start);if(p.opacity<=.03)continue;
   const bounds=n.kind==='solid'?projectSolid(n,p).bounds:['image','rect','surface'].includes(n.kind)?[0,0,n.width,n.height]:n.kind==='dots'?dotBounds(sampleDots(n.states,t-s.start)):n.kind==='path'?n.bounds:assetBounds(n.asset,p.v);if(!bounds)continue;
   const obstacle=transformBounds(bounds,p);
